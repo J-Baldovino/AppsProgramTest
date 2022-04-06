@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.BattleController">
+   <children>
+      <ImageView fitHeight="459.0" fitWidth="866.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/3hqfdsb9uvg11.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="player" fitHeight="88.0" fitWidth="135.0" layoutX="125.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Players/PikPng.com_pokemon-ruby-logo-png_3422976.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="114.0" fitWidth="803.0" layoutX="-2.0" layoutY="345.0" pickOnBounds="true">
+         <image>
+            <Image url="@images/Battle%20UI%20%5BNot%20Mine%5D%20Loyalty/Loyalty%20Battle%20UI/battleCommand.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="135.0" fitWidth="345.0" layoutX="455.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Battle%20UI%20%5BNot%20Mine%5D%20Loyalty/Loyalty%20Battle%20UI/battlePlayerBoxD.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="124.0" fitWidth="353.0" layoutX="-62.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Battle%20UI%20%5BNot%20Mine%5D%20Loyalty/Loyalty%20Battle%20UI/battleFoeBoxD.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="97.0" layoutX="413.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Buttons/Attack.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="32.0" fitWidth="108.0" layoutX="546.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Buttons/Defend.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="79.0" layoutX="684.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Buttons/Burst.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="attackButton" layoutX="413.0" layoutY="383.0" mnemonicParsing="false" opacity="0.0" prefHeight="32.0" prefWidth="97.0" text="Attack" />
+      <Button fx:id="defendButton" layoutX="546.0" layoutY="383.0" mnemonicParsing="false" onAction="#sceneWin" opacity="0.0" prefHeight="30.0" prefWidth="108.0" text="Defend" />
+      <Button fx:id="burstButton" layoutX="684.0" layoutY="383.0" mnemonicParsing="false" onAction="#sceneLose" opacity="0.0" prefHeight="30.0" prefWidth="78.0" text="Burst" />
+      <ImageView fx:id="enemy" fitHeight="99.0" fitWidth="144.0" layoutX="530.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Players/pngaaa.com-4283927.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="90.0" layoutY="20.0" prefHeight="31.0" prefWidth="108.0" text="Enemy">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="30.0" />
+         </font></Label>
+      <Label layoutX="613.0" layoutY="275.0" text="Player">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="30.0" />
+         </font></Label>
+      <Label layoutX="18.0" layoutY="360.0" text="What will you do?">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="30.0" />
+         </font></Label>
+   </children>
+</AnchorPane>
