@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="407.0" fitWidth="607.0" layoutY="-2.0">
+         <image>
+            <Image url="@../Game/7f98ec065aa58d2f8787aa833515d157.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="268.0" layoutY="64.0" text="TITLE" textFill="RED">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="HowPlay" layoutX="469.0" layoutY="14.0" mnemonicParsing="false" onAction="#HowPlay" text="HOW TO PLAY" />
+      <Button fx:id="Credits" layoutX="509.0" layoutY="64.0" mnemonicParsing="false" onAction="#Credits" text="CREDITS" />
+      <Button fx:id="Start" layoutX="288.0" layoutY="266.0" mnemonicParsing="false" onAction="#Start" text="START" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="418.0" fitWidth="609.0" layoutX="-6.0" layoutY="-10.0">
+         <image>
+            <Image url="@../Game/istockphoto-1182467404-612x612.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="135.0" layoutY="23.0" text="How to play ">
+         <font>
+            <Font name="System Bold" size="55.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="94.0" text="BLAH BLAH BLAH">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Button layoutX="260.0" layoutY="333.0" mnemonicParsing="false" text="MAIN MENU" />
+   </children>
+</AnchorPane>
