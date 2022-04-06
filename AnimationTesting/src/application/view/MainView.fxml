@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -37,5 +38,7 @@
             <Image url="@antman.png" />
          </image>
       </ImageView>
+      <Button fx:id="startButton" layoutX="320.0" layoutY="66.0" mnemonicParsing="false" onAction="#startMove" text="Start" />
+      <Button fx:id="pauseButton" layoutX="419.0" layoutY="66.0" mnemonicParsing="false" onAction="#pauseMove" text="Pause" />
    </children>
 </AnchorPane>
