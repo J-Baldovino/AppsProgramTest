@@ -51,6 +51,8 @@ public class MainController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		//All of these commands can be changed and tweaked 
+		
 		//Translate (move) the pika image
 		translatePika.setNode(pika);
 		translatePika.setDuration(Duration.millis(100)); //sets the duration of the entire animation, so in this instance it would take 1000 milliseconds or a second
@@ -83,7 +85,7 @@ public class MainController implements Initializable{
 		
 		//Scale the antman image
 		scale.setNode(ant);
-		scale.setDuration(Duration.millis(2000)); //sets the duration of the entire animation, so in this instance it would take 1000 milliseconds or a second
+		scale.setDuration(Duration.millis(1000)); //sets the duration of the entire animation, so in this instance it would take 1000 milliseconds or a second
 		//translate.setCycleCount(2); //repeats the animation two times
 		scale.setCycleCount(TranslateTransition.INDEFINITE); //used to cause an animation to go on forever
 		scale.setInterpolator(Interpolator.LINEAR);
