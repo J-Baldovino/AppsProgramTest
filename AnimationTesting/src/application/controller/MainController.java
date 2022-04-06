@@ -53,7 +53,7 @@ public class MainController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//Translate (move) the pika image
 		translatePika.setNode(pika);
-		translatePika.setDuration(Duration.millis(1000)); //sets the duration of the entire animation, so in this instance it would take 1000 milliseconds or a second
+		translatePika.setDuration(Duration.millis(100)); //sets the duration of the entire animation, so in this instance it would take 1000 milliseconds or a second
 		//translate.setCycleCount(2); //repeats the animation two times
 		translatePika.setCycleCount(TranslateTransition.INDEFINITE); //used to cause an animation to go on forever
 		//The two setBy methods used together causes the image to move in a diagonal
@@ -63,7 +63,7 @@ public class MainController implements Initializable{
 		
 		//Rotate the sanic image
 		rotateSanic.setNode(sanic);
-		rotateSanic.setDuration(Duration.millis(1000)); //sets the duration of the entire animation, so in this instance it would take 1000 milliseconds or a second
+		rotateSanic.setDuration(Duration.millis(10)); //sets the duration of the entire animation, so in this instance it would take 1000 milliseconds or a second
 		//translate.setCycleCount(2); //repeats the animation two times
 		rotateSanic.setCycleCount(TranslateTransition.INDEFINITE); //used to cause an animation to go on forever
 		//The two setBy methods used together causes the image to move in a diagonal
