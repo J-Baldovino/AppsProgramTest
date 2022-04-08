@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.infoControl">
+   <children>
+      <Button layoutX="334.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMain" text="back" />
+      <Label layoutX="182.0" layoutY="118.0" text="credits" />
+   </children>
+</AnchorPane>
