@@ -3,13 +3,21 @@ package application.controller;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
+import application.model.Champions;
+import application.model.Monster;
+import application.model.Person;
+import application.model.TwoDice;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
@@ -25,7 +33,7 @@ public class BattleController {
 	
 	@FXML
 	private AnchorPane wC;
-
+	
     @FXML
     private Button defendButton;
 
@@ -40,6 +48,38 @@ public class BattleController {
 
     @FXML
     private ImageView player;
+    
+    @FXML
+    private Button sceneAction1;
+    
+    @FXML
+    private Button sceneAction2;
+    
+    @FXML
+    private Button sceneAction3;
+    
+    @FXML
+    private TextField dice1;
+    
+    @FXML
+    private TextField dice2;
+    
+    @FXML
+    private TextField BattleText;
+    
+    @FXML
+    private ImageView diceImage;
+    
+    @FXML
+    private Label playerName;
+    
+    @FXML
+    private Label playerHealth;
+    
+    //ARNOLD PART //This is where I will put the players name but it is set at the moment
+	Person DiceHero = new Person("DiceHero",10, 10, 0, 10); //Person is different from 
+	TwoDice dice = new TwoDice();
+	ArrayList<Monster> list = new ArrayList<>();
     
     @FXML
     private void initialize() throws MalformedURLException
@@ -57,7 +97,16 @@ public class BattleController {
         mp.setVolume(0.1);
         mp.play();
         
-    	
+		dice.roll();
+		Monster gremlin;
+		gremlin = new Monster("Gremlin", 10, 3);
+		list.add(gremlin);
+		Monster gremlin2;
+		gremlin2 = new Monster("Gremlin2", 10, 7);
+		list.add(gremlin2);
+		
+		playerName.setText(DiceHero.getName());
+		playerHealth.setText(DiceHero.getHealthRatio());
     }
 
     @FXML
@@ -92,6 +141,48 @@ public class BattleController {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+    }
+    
+    @FXML
+    void sceneAction1(ActionEvent event) {
+    	dice.roll();
+		System.out.println("Dice one: " + dice.getDie1() + " Dice two: " + dice.getDie2());
+		System.out.println(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
+		System.out.println(DiceHero.takeDamage(list.get(0).getAttackPower()));
+		if(DiceHero.getHealth() <= 0)
+		{
+			System.out.println(DiceHero.getName() + " has died");
+		}
+		if(list.get(0).getHealth() <= 0)
+		{
+			System.out.println(list.get(0).getName() + " has died" );
+		}
+		
+		System.out.println(DiceHero.getName() + " has " + DiceHero.getHealth() + " hp");
+		System.out.println(list.get(0).getName() + " has " + list.get(0).getHealth() + " hp");
+    	
+		
+		playerHealth.setText(DiceHero.getHealthRatio());
+    }
+    
+    @FXML
+    void sceneAction2(ActionEvent event) {
+    	dice.rollOneDice();
+    	dice1.setText( Integer.toString(dice.getDie1()) );
+
+    	//dice1.setText(Integer.toString(dice.getDie1()));
+    	BattleText.setText(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
+    	
+        File file = new File("/../../dice" + dice.getDie1() + ".png");
+        Image image = new Image(file.toURI().toString());
+        diceImage.setImage(image);
+
+    }
+    
+    @FXML
+    void sceneAction3(ActionEvent event) {
+    	
+    	
     }
 
 }
