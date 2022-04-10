@@ -23,12 +23,16 @@ public class FightController implements Initializable{
     
     private TranslateTransition translateSword = new TranslateTransition();
     private RotateTransition rotateSword = new RotateTransition();
+    private TranslateTransition translateGoomba = new TranslateTransition();
+    private TranslateTransition translateSanic = new TranslateTransition();
 
     @FXML
     void attack(ActionEvent event) {
 //    	rotateSword.play();
     	translateSword.play();
     	rotateSword.play();
+    	translateGoomba.play();
+    	translateSanic.play();
     }
     
     @Override
@@ -49,6 +53,19 @@ public class FightController implements Initializable{
 		translateSword.setByY(-200); //moves the image up by 200 pixels
 		translateSword.setAutoReverse(true);
     	
+		//Preparing translation movement for enemy
+		translateGoomba.setNode(goomba);
+		translateGoomba.setDuration(Duration.millis(200));
+		translateGoomba.setCycleCount(4);
+		translateGoomba.setByX(35); 
+		translateGoomba.setAutoReverse(true);
+		
+		//Preparing translation movement for player
+		translateSanic.setNode(sanic);
+		translateSanic.setDuration(Duration.millis(200));
+		translateSanic.setCycleCount(2);
+		translateSanic.setByY(-35); 
+		translateSanic.setAutoReverse(true);
     }
 
 }
