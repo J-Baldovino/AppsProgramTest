@@ -40,5 +40,6 @@
       </ImageView>
       <Button fx:id="startButton" layoutX="320.0" layoutY="66.0" mnemonicParsing="false" onAction="#startMove" text="Start" />
       <Button fx:id="pauseButton" layoutX="419.0" layoutY="66.0" mnemonicParsing="false" onAction="#pauseMove" text="Pause" />
+      <Button fx:id="switchButton" layoutX="591.0" layoutY="66.0" mnemonicParsing="false" onAction="#switchScene" text="Switch to battle" />
    </children>
 </AnchorPane>

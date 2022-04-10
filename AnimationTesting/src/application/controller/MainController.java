@@ -1,6 +1,8 @@
 package application.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,19 +13,26 @@ import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MainController implements Initializable{
-
+	@FXML
+	private AnchorPane mainPane;
+	
 	@FXML
 	private ImageView pika, sanic, monke, ant;
 	
 	@FXML
-	private Button startButton, pauseButton;
+	private Button startButton, pauseButton, switchButton;
 	
 	private TranslateTransition translatePika = new TranslateTransition();
 	
@@ -47,6 +56,16 @@ public class MainController implements Initializable{
     	rotateSanic.pause();
     	fade.pause();
     	scale.pause();
+    }
+    
+    @FXML
+    void switchScene(ActionEvent event) throws IOException {
+    	URL url = new File("src/application/view/FightTest.fxml").toURI().toURL();
+    	mainPane = FXMLLoader.load(url);
+        Scene scene = new Scene(mainPane);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 	
 	@Override

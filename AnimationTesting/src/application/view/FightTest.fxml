@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.FightController">
+   <children>
+      <ImageView fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@BattleBack.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sanic" fitHeight="150.0" fitWidth="200.0" layoutX="21.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@sanic.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="goomba" fitHeight="150.0" fitWidth="200.0" layoutX="630.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@goomba.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sword" fitHeight="78.0" fitWidth="74.0" layoutX="142.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pixelsword.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="attackButton" layoutX="179.0" layoutY="550.0" mnemonicParsing="false" onAction="#attack" text="Attack" />
+   </children>
+</AnchorPane>
