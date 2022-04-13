@@ -16,15 +16,16 @@ import javafx.util.Duration;
 
 public class FightController implements Initializable{
     @FXML
-    private Button attackButton;
+    private Button attackButton, defendBtn;
 
     @FXML
-    private ImageView sanic, goomba, sword;
+    private ImageView sanic, goomba, sword, shield;
     
     private TranslateTransition translateSword = new TranslateTransition();
     private RotateTransition rotateSword = new RotateTransition();
     private TranslateTransition translateGoomba = new TranslateTransition();
     private TranslateTransition translateSanic = new TranslateTransition();
+    private TranslateTransition translateShield = new TranslateTransition();
 
     @FXML
     void attack(ActionEvent event) {
@@ -33,6 +34,11 @@ public class FightController implements Initializable{
     	rotateSword.play();
     	translateGoomba.play();
     	translateSanic.play();
+    }
+    
+    @FXML
+    void defendHero(ActionEvent event) {
+    	translateShield.play();
     }
     
     @Override
@@ -52,6 +58,13 @@ public class FightController implements Initializable{
 		translateSword.setByX(500); //moves the image to the right by 500 pixels
 		translateSword.setByY(-200); //moves the image up by 200 pixels
 		translateSword.setAutoReverse(true);
+
+		//preparing translation movement for shield
+		translateShield.setNode(shield);
+		translateShield.setDuration(Duration.millis(200));
+		translateShield.setCycleCount(2);
+		translateShield.setByY(40);
+		translateShield.setAutoReverse(true);
     	
 		//Preparing translation movement for enemy
 		translateGoomba.setNode(goomba);
@@ -66,6 +79,7 @@ public class FightController implements Initializable{
 		translateSanic.setCycleCount(2);
 		translateSanic.setByY(-35); 
 		translateSanic.setAutoReverse(true);
+		
     }
 
 }
