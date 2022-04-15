@@ -63,7 +63,7 @@ public class FightController implements Initializable{
 		translateShield.setNode(shield);
 		translateShield.setDuration(Duration.millis(200));
 		translateShield.setCycleCount(2);
-		translateShield.setByY(40);
+		translateShield.setByY(-40);
 		translateShield.setAutoReverse(true);
     	
 		//Preparing translation movement for enemy
