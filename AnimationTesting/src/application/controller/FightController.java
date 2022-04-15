@@ -40,7 +40,7 @@ public class FightController implements Initializable{
     	rotateSword1.play();
     	translateGoomba.play();
     	translateSanic.play();
-    	fadeGoomba.play();
+    	//fadeGoomba.play();
     }
     
     @FXML
@@ -52,7 +52,7 @@ public class FightController implements Initializable{
     	rotateSword2.play();
     	translateGoomba.play();
     	translateSanic.play();
-    	fadeGoomba.play();
+    	//fadeGoomba.play();
     }
     
     @FXML
@@ -132,12 +132,12 @@ public class FightController implements Initializable{
 		translateSanic.setAutoReverse(true);
 		
 		//Preparing fade animation for the enemy
-		fadeGoomba.setNode(goomba);
-		fadeGoomba.setDuration(Duration.millis(1000));
-		fadeGoomba.setCycleCount(1);
-		fadeGoomba.setInterpolator(Interpolator.EASE_OUT); //Causes the animation to slow down near the end of the sequence
-		fadeGoomba.setFromValue(1); //original opacity value
-		fadeGoomba.setToValue(0);	//target opacity value
+//		fadeGoomba.setNode(goomba);
+//		fadeGoomba.setDuration(Duration.millis(1000));
+//		fadeGoomba.setCycleCount(1);
+//		fadeGoomba.setInterpolator(Interpolator.EASE_OUT); //Causes the animation to slow down near the end of the sequence
+//		fadeGoomba.setFromValue(1); //original opacity value
+//		fadeGoomba.setToValue(0);	//target opacity value
 		
 		//Preparing fade animation for healing
 		fadeHeal.setNode(heal);
