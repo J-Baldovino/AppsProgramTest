@@ -17,36 +17,39 @@ import javafx.util.Duration;
 
 public class FightController implements Initializable{
     @FXML
-<<<<<<< HEAD
-    private Button attackButton, healButton;
-=======
-    private Button attackButton, defendBtn;
->>>>>>> refs/heads/myTestBranch
+    private Button basicAttackButton, multiAttackButton, healButton, defendBtn;
 
     @FXML
-<<<<<<< HEAD
-    private ImageView sanic, goomba, sword, heal;
-=======
-    private ImageView sanic, goomba, sword, shield;
->>>>>>> refs/heads/myTestBranch
-    
-    private TranslateTransition translateSword = new TranslateTransition();
-    private RotateTransition rotateSword = new RotateTransition();
+    private ImageView sanic, goomba, sword, heal, shield;
+    private TranslateTransition translateSword1 = new TranslateTransition();
+    private TranslateTransition translateSword2 = new TranslateTransition();
+    private RotateTransition rotateSword1 = new RotateTransition();
+    private RotateTransition rotateSword2 = new RotateTransition();
     private TranslateTransition translateGoomba = new TranslateTransition();
     private TranslateTransition translateSanic = new TranslateTransition();
-<<<<<<< HEAD
     private FadeTransition fadeGoomba = new FadeTransition();
     private FadeTransition fadeHeal = new FadeTransition();
-=======
     private TranslateTransition translateShield = new TranslateTransition();
->>>>>>> refs/heads/myTestBranch
 
     @FXML
-    void attack(ActionEvent event) {
+    void bAttack(ActionEvent event) {
     	sword.setVisible(true);
     	heal.setVisible(false);
-    	translateSword.play();
-    	rotateSword.play();
+    	shield.setVisible(false);
+    	translateSword1.play();
+    	rotateSword1.play();
+    	translateGoomba.play();
+    	translateSanic.play();
+    	fadeGoomba.play();
+    }
+    
+    @FXML
+    void mAttack(ActionEvent event) {
+    	sword.setVisible(true);
+    	heal.setVisible(false);
+    	shield.setVisible(false);
+    	translateSword2.play();
+    	rotateSword2.play();
     	translateGoomba.play();
     	translateSanic.play();
     	fadeGoomba.play();
@@ -56,12 +59,16 @@ public class FightController implements Initializable{
     void healing(ActionEvent event) {
     	sword.setVisible(false);
     	heal.setVisible(true);
+    	shield.setVisible(false);
     	fadeHeal.play();
     	
     }
     
     @FXML
     void defendHero(ActionEvent event) {
+    	sword.setVisible(false);
+    	heal.setVisible(false);
+    	shield.setVisible(true);
     	translateShield.play();
     }
     
@@ -69,21 +76,39 @@ public class FightController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	sword.setVisible(false); //start the sword as not visible
     	heal.setVisible(false);
-    	//Preparing rotation movement for sword
-    	rotateSword.setNode(sword);
-    	rotateSword.setDuration(Duration.millis(100));
-    	rotateSword.setCycleCount(4);
-    	rotateSword.setInterpolator(Interpolator.LINEAR);
-		rotateSword.setAxis(Rotate.Z_AXIS); 
-		rotateSword.setByAngle(360);
+    	shield.setVisible(false);
+    	
+    	//Preparing rotation movement for basic sword
+    	rotateSword1.setNode(sword);
+    	rotateSword1.setDuration(Duration.millis(100));
+    	rotateSword1.setCycleCount(4);
+    	rotateSword1.setInterpolator(Interpolator.LINEAR);
+		rotateSword1.setAxis(Rotate.Z_AXIS); 
+		rotateSword1.setByAngle(360);
 		
-		//Preparing translation movement for sword
-		translateSword.setNode(sword);
-		translateSword.setDuration(Duration.millis(200));
-		translateSword.setCycleCount(2);
-		translateSword.setByX(500); //moves the image to the right by 500 pixels
-		translateSword.setByY(-200); //moves the image up by 200 pixels
-		translateSword.setAutoReverse(true);
+		//Preparing translation movement for basic sword
+		translateSword1.setNode(sword);
+		translateSword1.setDuration(Duration.millis(200));
+		translateSword1.setCycleCount(2);
+		translateSword1.setByX(500); //moves the image to the right by 500 pixels
+		translateSword1.setByY(-200); //moves the image up by 200 pixels
+		translateSword1.setAutoReverse(true);
+		
+		//Preparing rotation movement for multi sword
+    	rotateSword2.setNode(sword);
+    	rotateSword2.setDuration(Duration.millis(100));
+    	rotateSword2.setCycleCount(12);
+    	rotateSword2.setInterpolator(Interpolator.LINEAR);
+		rotateSword2.setAxis(Rotate.Z_AXIS); 
+		rotateSword2.setByAngle(360);
+		
+		//Preparing translation movement for multi sword
+		translateSword2.setNode(sword);
+		translateSword2.setDuration(Duration.millis(200));
+		translateSword2.setCycleCount(6);
+		translateSword2.setByX(500); //moves the image to the right by 500 pixels
+		translateSword2.setByY(-200); //moves the image up by 200 pixels
+		translateSword2.setAutoReverse(true);
 
 		//preparing translation movement for shield
 		translateShield.setNode(shield);
@@ -106,7 +131,6 @@ public class FightController implements Initializable{
 		translateSanic.setByY(-35); 
 		translateSanic.setAutoReverse(true);
 		
-<<<<<<< HEAD
 		//Preparing fade animation for the enemy
 		fadeGoomba.setNode(goomba);
 		fadeGoomba.setDuration(Duration.millis(1000));
@@ -123,8 +147,6 @@ public class FightController implements Initializable{
 		fadeHeal.setAutoReverse(true);
 		fadeHeal.setFromValue(0); //original opacity value
 		fadeHeal.setToValue(1);	//target opacity value
-=======
->>>>>>> refs/heads/myTestBranch
     }
 
 }
