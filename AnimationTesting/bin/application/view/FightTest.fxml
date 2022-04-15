@@ -29,11 +29,20 @@
          </image>
       </ImageView>
       <Button fx:id="attackButton" layoutX="179.0" layoutY="550.0" mnemonicParsing="false" onAction="#attack" text="Attack" />
+<<<<<<< HEAD
       <ImageView fx:id="heal" fitHeight="150.0" fitWidth="200.0" layoutX="21.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@heal.gif" />
          </image>
       </ImageView>
       <Button fx:id="healButton" layoutX="307.0" layoutY="550.0" mnemonicParsing="false" onAction="#healing" text="Heal" />
+=======
+      <Button fx:id="defendBtn" layoutX="565.0" layoutY="550.0" mnemonicParsing="false" onAction="#defendHero" text="Defend" />
+      <ImageView fx:id="shield" fitHeight="94.0" fitWidth="99.0" layoutX="142.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@hylianShield.png" />
+         </image>
+      </ImageView>
+>>>>>>> refs/heads/myTestBranch
    </children>
 </AnchorPane>

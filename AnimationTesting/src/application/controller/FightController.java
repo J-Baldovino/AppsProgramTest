@@ -17,17 +17,29 @@ import javafx.util.Duration;
 
 public class FightController implements Initializable{
     @FXML
+<<<<<<< HEAD
     private Button attackButton, healButton;
+=======
+    private Button attackButton, defendBtn;
+>>>>>>> refs/heads/myTestBranch
 
     @FXML
+<<<<<<< HEAD
     private ImageView sanic, goomba, sword, heal;
+=======
+    private ImageView sanic, goomba, sword, shield;
+>>>>>>> refs/heads/myTestBranch
     
     private TranslateTransition translateSword = new TranslateTransition();
     private RotateTransition rotateSword = new RotateTransition();
     private TranslateTransition translateGoomba = new TranslateTransition();
     private TranslateTransition translateSanic = new TranslateTransition();
+<<<<<<< HEAD
     private FadeTransition fadeGoomba = new FadeTransition();
     private FadeTransition fadeHeal = new FadeTransition();
+=======
+    private TranslateTransition translateShield = new TranslateTransition();
+>>>>>>> refs/heads/myTestBranch
 
     @FXML
     void attack(ActionEvent event) {
@@ -46,6 +58,11 @@ public class FightController implements Initializable{
     	heal.setVisible(true);
     	fadeHeal.play();
     	
+    }
+    
+    @FXML
+    void defendHero(ActionEvent event) {
+    	translateShield.play();
     }
     
     @Override
@@ -67,6 +84,13 @@ public class FightController implements Initializable{
 		translateSword.setByX(500); //moves the image to the right by 500 pixels
 		translateSword.setByY(-200); //moves the image up by 200 pixels
 		translateSword.setAutoReverse(true);
+
+		//preparing translation movement for shield
+		translateShield.setNode(shield);
+		translateShield.setDuration(Duration.millis(200));
+		translateShield.setCycleCount(2);
+		translateShield.setByY(-40);
+		translateShield.setAutoReverse(true);
     	
 		//Preparing translation movement for enemy
 		translateGoomba.setNode(goomba);
@@ -82,6 +106,7 @@ public class FightController implements Initializable{
 		translateSanic.setByY(-35); 
 		translateSanic.setAutoReverse(true);
 		
+<<<<<<< HEAD
 		//Preparing fade animation for the enemy
 		fadeGoomba.setNode(goomba);
 		fadeGoomba.setDuration(Duration.millis(1000));
@@ -98,6 +123,8 @@ public class FightController implements Initializable{
 		fadeHeal.setAutoReverse(true);
 		fadeHeal.setFromValue(0); //original opacity value
 		fadeHeal.setToValue(1);	//target opacity value
+=======
+>>>>>>> refs/heads/myTestBranch
     }
 
 }
