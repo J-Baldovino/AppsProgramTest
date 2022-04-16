@@ -59,6 +59,9 @@ public class BattleController {
     private Button sceneAction3;
     
     @FXML
+    private Button endTurn;
+    
+    @FXML
     private TextField dice1;
     
     @FXML
@@ -75,6 +78,12 @@ public class BattleController {
     
     @FXML
     private Label playerHealth;
+    
+    @FXML
+    private Label EnemyName;
+    
+    @FXML
+    private Label EnemyHealth;
     
     //ARNOLD PART //This is where I will put the players name but it is set at the moment
 	Person DiceHero = new Person("DiceHero",10, 10, 0, 10); //Person is different from 
@@ -107,7 +116,20 @@ public class BattleController {
 		
 		playerName.setText(DiceHero.getName());
 		playerHealth.setText(DiceHero.getHealthRatio());
-    }
+		EnemyName.setText(list.get(0).getName());
+		EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
+		
+		
+		
+		if(DiceHero.getMana() + dice.getDie1() > DiceHero.getMaxMana())
+		{
+			DiceHero.setMana(10);
+		}
+		else
+		{
+			DiceHero.setMana(DiceHero.getMana() + dice.getDie1());
+		}
+	}
 
     @FXML
     void sceneWin(ActionEvent event) {
@@ -163,17 +185,19 @@ public class BattleController {
     	
 		
 		playerHealth.setText(DiceHero.getHealthRatio());
+		
     }
     
     @FXML
     void sceneAction2(ActionEvent event) {
     	dice.rollOneDice();
     	dice1.setText( Integer.toString(dice.getDie1()) );
+    	
 
     	//dice1.setText(Integer.toString(dice.getDie1()));
     	BattleText.setText(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
     	
-        File file = new File("/../../dice" + dice.getDie1() + ".png");
+        File file = new File("/../../images/dice" + dice.getDie1() + ".png");
         Image image = new Image(file.toURI().toString());
         diceImage.setImage(image);
 
@@ -182,6 +206,23 @@ public class BattleController {
     @FXML
     void sceneAction3(ActionEvent event) {
     	
+    	
+    }
+    
+    @FXML
+    void endTurn(ActionEvent event) {
+//    	try {
+//    		URL url = new File("Title.fxml").toURI().toURL();
+//    		URL styleUrl = new File("src/application/application.css").toURI().toURL();
+//			wC = FXMLLoader.load(url);
+//			Stage classifieds= (Stage) ((Node)event.getSource()).getScene().getWindow();
+//			Scene scene = new Scene(wC);
+//			scene.getStylesheets().add(styleUrl.toString());
+//			classifieds.setScene(scene);
+//			classifieds.show();
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
     	
     }
 

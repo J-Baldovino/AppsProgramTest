@@ -25,7 +25,7 @@ public class Person {
 		this.health = health;
 	}
 	
-	public int setMana() {
+	public int setMana(int manaGain) {
 		return this.mana;
 	}
 
