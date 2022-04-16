@@ -86,7 +86,7 @@ public class BattleController {
     private Label EnemyHealth;
     
     //ARNOLD PART //This is where I will put the players name but it is set at the moment
-	Person DiceHero = new Person("DiceHero",10, 10, 0, 10); //Person is different from 
+	Person DiceHero = new Person(10, 10, 0, 10); //Person is different from 
 	TwoDice dice = new TwoDice();
 	ArrayList<Monster> list = new ArrayList<>();
     
@@ -114,7 +114,7 @@ public class BattleController {
 		gremlin2 = new Monster("Gremlin2", 10, 7);
 		list.add(gremlin2);
 		
-		playerName.setText(DiceHero.getName());
+		//playerName.setText(DiceHero.getName());
 		playerHealth.setText(DiceHero.getHealthRatio());
 		EnemyName.setText(list.get(0).getName());
 		EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
@@ -170,17 +170,20 @@ public class BattleController {
     	dice.roll();
 		System.out.println("Dice one: " + dice.getDie1() + " Dice two: " + dice.getDie2());
 		System.out.println(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
-		System.out.println(DiceHero.takeDamage(list.get(0).getAttackPower()));
+		
+		//System.out.println(DiceHero.takeDamage(list.get(0).getAttackPower()));
+		System.out.println();
+		
 		if(DiceHero.getHealth() <= 0)
 		{
-			System.out.println(DiceHero.getName() + " has died");
+			System.out.println( "NAME has died has died"); //DiceHero.getName() was removed
 		}
 		if(list.get(0).getHealth() <= 0)
 		{
 			System.out.println(list.get(0).getName() + " has died" );
 		}
 		
-		System.out.println(DiceHero.getName() + " has " + DiceHero.getHealth() + " hp");
+		//System.out.println(DiceHero.getName() + " has " + DiceHero.getHealth() + " hp");
 		System.out.println(list.get(0).getName() + " has " + list.get(0).getHealth() + " hp");
     	
 		
