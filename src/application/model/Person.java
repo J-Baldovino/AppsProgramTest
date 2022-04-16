@@ -125,4 +125,74 @@ public class Person {
 		return getName();
 	}
 	*/
+	
+	public void mana(int dice1) {
+    	Person.mana += dice1;
+    	
+    	if(Person.mana >= 10) {
+    		Person.mana = 10;
+    	}
+    	
+    	//Set textbox to current mana
+    
+    }
+	
+	//Need to make sure that the mana is enough
+	
+	 public int strike(int dice1) {
+	    	
+		 if(Person.mana >= 1) {
+	    	Person.mana -= 1;
+	    	
+	    	
+		 }
+		 else {
+			 //Set textbox to NO MANA Wait for next Turn;
+			 dice1 = 0;
+		 }
+		 
+		 return dice1;
+	    	
+	    }
+	    
+	    public int multistrike(int dice1) {
+	    	
+	    	if(Person.mana >= 4) {
+	    	Person.mana -= 4;
+	    	}
+	    	
+	    	else {
+	    		//NO mana Wait for next Turn
+	    		dice1 = 0;
+	    	}
+	    	
+	    	return dice1 * dice1;
+	    }
+	    
+	    public int heal(int dice1) {
+	    	
+	    	if(Person.mana >= 4) {
+	    	Person.mana -= 4;
+	    	}
+	    	else {
+	    		//NO MANA WAIT FOR NEXT TURN
+	    		dice1 = 0;
+	    		
+	    	}
+	    	
+	    			return dice1;
+	    }
+	    
+	    
+	    public int defend(int dice1) {
+	    	if(Person.mana >= 2) {
+	    	Person.mana -= 2;
+	    	}
+	    	
+	    	else {
+	    		dice1 = 0;
+	    	}
+	    	
+	    	return dice1;
+	    }
 }

@@ -235,6 +235,11 @@ public class BattleController {
     	
     }
     
+    
+    
+    
+    
+    
     @FXML
     void endTurn(ActionEvent event) {
 //    	try {
