@@ -194,39 +194,14 @@ public class BattleController {
 		
     }
     
+    
     @FXML
     void sceneAction2(ActionEvent event) {
-
-    	//dice1.setText(Integer.toString(dice.getDie1()));
-//    	BattleText.setText(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
-//    	
-//        File file = new File("/../../dice" + dice.getDie1() + ".png");
-//        Image image = new Image(file.toURI().toString());
-//        diceImage.setImage(image);
     	
-
-    	
-    	defendButton.setDisable(true);
-
-        Thread thread = new Thread(){
-            public void run(){
-                System.out.println("Thread Running");
-                try {
-                    for (int i = 0; i < 15; i++) {
-                    	dice.rollOneDice();
-                    	dice1.setText( Integer.toString(dice.getDie1()) );
-                        File file = new File("/../../images/dice" + dice.getDie1() +".png");
-                        diceImage.setImage(new Image(file.toURI().toString()));
-                        Thread.sleep(50);
-                    }
-                    defendButton.setDisable(false);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        thread.start();
+        list.get(0).takeDamage(rollingFunction());
+        System.out.println("The monster's hp is now = " + Integer.toString(list.get(0).getHealth()) + " the thread is fucking me here please help God");
+        //EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
+        
     }
     
     @FXML
@@ -250,6 +225,31 @@ public class BattleController {
 //			e.printStackTrace();
 //		}
     	
+    }
+    
+    public int rollingFunction(){
+    	defendButton.setDisable(true);
+
+        Thread thread = new Thread(){
+            public void run(){
+                System.out.println("Thread Running");
+                try {
+                    for (int i = 0; i < 15; i++) {
+                    	dice.rollOneDice();
+                    	dice1.setText( Integer.toString(dice.getDie1()) );
+                        File file = new File("/../../images/dice" + dice.getDie1() +".png");
+                        diceImage.setImage(new Image(file.toURI().toString()));
+                        Thread.sleep(50);
+                    }
+                    defendButton.setDisable(false);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
+        
+    	return dice.getDie1();
     }
 
 }
