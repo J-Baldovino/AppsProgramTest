@@ -1,53 +1,55 @@
 package application.model;
 
 public class Person {
-	private String name;
-	private int health;
-	private int maxHealth;
-	private int mana;
-	private int maxMana;
+	//private String name;
+	private static int health;
+	private static int maxHealth;
+	private static int mana;
+	private static int maxMana;
 
 //constructor
-	public Person(String name, int health, int maxHealth, int mana, int maxMana) {
-		this.name = name;
-		this.health = health;
-		this.maxHealth = maxHealth;
-		this.mana = mana;
-		this.maxMana = maxMana;
+	public Person( int health, int maxHealth, int mana, int maxMana) {
+		//this.name = name;
+		Person.health = health;
+		Person.maxHealth = maxHealth;
+		Person.mana = mana;
+		Person.maxMana = maxMana;
 	}
 
 //setter
+	/*
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	*/
 	public void setHealth(int health) {
-		this.health = health;
+		Person.health = health;
 	}
 	
-	public int setMana() {
-		return this.mana;
+	public int setMana(int manaGain) {
+		return Person.mana;
 	}
 
 	// getter
+	/*
 	public String getName() {
 		return this.name;
 	}
-
+*/
 	public int getHealth() {
-		return this.health;
+		return Person.health;
 	}
 	
 	public int getMaxHealth() {
-		return this.maxHealth;
+		return Person.maxHealth;
 	}
 	
 	public int getMana() {
-		return this.mana;
+		return Person.mana;
 	}
 	
 	public int getMaxMana() {
-		return this.maxMana;
+		return Person.maxMana;
 	}
 	
 	
@@ -91,28 +93,36 @@ public class Person {
 		}
 	}
 	public int drainDice(int dice1) { 
-		this.health += dice1;
+		Person.health += dice1;
 		return dice1;
 	}
-	public String healDice(int dice1) { 
-		this.health += dice1;
-		return getName() + " has healed for " + dice1+"\n";
+	public void healDice(int dice1) { 
+		Person.health += dice1;
+		System.out.println("NAME has healed for " +dice1);
+		//return getName() + " has healed for " + dice1+"\n";
 	}
 	
-	public String reroll(TwoDice dice) { 
+	public void reroll(TwoDice dice) { 
 		dice.roll();
-		return getName() + " has rerolled \n";
+		
+		System.out.println("Nmae has rolled dice");
+		//return getName() + " has rerolled \n";
 	}
 	
-	public String takeDamage(int attackpower) {
-		this.health -= attackpower;
+	public void takeDamage(int attackpower) {
+		Person.health -= attackpower;
 //		System.out.println(getName() + " has taken " + attackpower);
 //		return getHealth();
-		return getName() + " has taken " + attackpower;
+		
+		System.out.println("NAME has taken" + attackpower);
+		//return getName() + " has taken " + attackpower;
 	}
+	
+	/*
 
 	// toString method returns name with getter
 	public String toString() {
 		return getName();
 	}
+	*/
 }

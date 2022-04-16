@@ -60,6 +60,9 @@ public class BattleController {
     private Button sceneAction3;
     
     @FXML
+    private Button endTurn;
+    
+    @FXML
     private TextField dice1;
     
     @FXML
@@ -79,9 +82,14 @@ public class BattleController {
     
     Random random = new Random();
 
+    @FXML
+    private Label EnemyName;
+    
+    @FXML
+    private Label EnemyHealth;
     
     //ARNOLD PART //This is where I will put the players name but it is set at the moment
-	Person DiceHero = new Person("DiceHero",10, 10, 0, 10); //Person is different from 
+	Person DiceHero = new Person(10, 10, 0, 10); //Person is different from 
 	TwoDice dice = new TwoDice();
 	ArrayList<Monster> list = new ArrayList<>();
     
@@ -109,9 +117,22 @@ public class BattleController {
 		gremlin2 = new Monster("Gremlin2", 10, 7);
 		list.add(gremlin2);
 		
-		playerName.setText(DiceHero.getName());
-		playerHealth.setText(DiceHero.getHealthRatio());
-    }
+		//playerName.setText(DiceHero.getName());
+//		playerHealth.setText(DiceHero.getHealthRatio());
+		EnemyName.setText(list.get(0).getName());
+		EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
+		
+		
+		
+//		if(DiceHero.getMana() + dice.getDie1() > DiceHero.getMaxMana())
+//		{
+//			DiceHero.setMana(10);
+//		}
+//		else
+//		{
+//			DiceHero.setMana(DiceHero.getMana() + dice.getDie1());
+//		}
+	}
 
     @FXML
     void sceneWin(ActionEvent event) {
@@ -152,27 +173,29 @@ public class BattleController {
     	dice.roll();
 		System.out.println("Dice one: " + dice.getDie1() + " Dice two: " + dice.getDie2());
 		System.out.println(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
-		System.out.println(DiceHero.takeDamage(list.get(0).getAttackPower()));
+		
+		//System.out.println(DiceHero.takeDamage(list.get(0).getAttackPower()));
+		System.out.println();
+		
 		if(DiceHero.getHealth() <= 0)
 		{
-			System.out.println(DiceHero.getName() + " has died");
+			System.out.println( "NAME has died has died"); //DiceHero.getName() was removed
 		}
 		if(list.get(0).getHealth() <= 0)
 		{
 			System.out.println(list.get(0).getName() + " has died" );
 		}
 		
-		System.out.println(DiceHero.getName() + " has " + DiceHero.getHealth() + " hp");
+		//System.out.println(DiceHero.getName() + " has " + DiceHero.getHealth() + " hp");
 		System.out.println(list.get(0).getName() + " has " + list.get(0).getHealth() + " hp");
     	
 		
 		playerHealth.setText(DiceHero.getHealthRatio());
+		
     }
     
     @FXML
     void sceneAction2(ActionEvent event) {
-//    	dice.rollOneDice();
-//    	dice1.setText( Integer.toString(dice.getDie1()) );
 
     	//dice1.setText(Integer.toString(dice.getDie1()));
 //    	BattleText.setText(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
@@ -181,6 +204,7 @@ public class BattleController {
 //        Image image = new Image(file.toURI().toString());
 //        diceImage.setImage(image);
     	
+
     	
     	defendButton.setDisable(true);
 
@@ -208,6 +232,23 @@ public class BattleController {
     @FXML
     void sceneAction3(ActionEvent event) {
     	
+    	
+    }
+    
+    @FXML
+    void endTurn(ActionEvent event) {
+//    	try {
+//    		URL url = new File("Title.fxml").toURI().toURL();
+//    		URL styleUrl = new File("src/application/application.css").toURI().toURL();
+//			wC = FXMLLoader.load(url);
+//			Stage classifieds= (Stage) ((Node)event.getSource()).getScene().getWindow();
+//			Scene scene = new Scene(wC);
+//			scene.getStylesheets().add(styleUrl.toString());
+//			classifieds.setScene(scene);
+//			classifieds.show();
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
     	
     }
 
