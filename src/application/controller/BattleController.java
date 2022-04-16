@@ -4,7 +4,6 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
 
 import application.model.Champions;
 import application.model.Monster;
@@ -80,8 +79,6 @@ public class BattleController {
     @FXML
     private Label playerHealth;
     
-    Random random = new Random();
-
     @FXML
     private Label EnemyName;
     
@@ -118,20 +115,20 @@ public class BattleController {
 		list.add(gremlin2);
 		
 		//playerName.setText(DiceHero.getName());
-//		playerHealth.setText(DiceHero.getHealthRatio());
+		playerHealth.setText(DiceHero.getHealthRatio());
 		EnemyName.setText(list.get(0).getName());
 		EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
 		
 		
 		
-//		if(DiceHero.getMana() + dice.getDie1() > DiceHero.getMaxMana())
-//		{
-//			DiceHero.setMana(10);
-//		}
-//		else
-//		{
-//			DiceHero.setMana(DiceHero.getMana() + dice.getDie1());
-//		}
+		if(DiceHero.getMana() + dice.getDie1() > DiceHero.getMaxMana())
+		{
+			DiceHero.setMana(10);
+		}
+		else
+		{
+			DiceHero.setMana(DiceHero.getMana() + dice.getDie1());
+		}
 	}
 
     @FXML
@@ -196,37 +193,17 @@ public class BattleController {
     
     @FXML
     void sceneAction2(ActionEvent event) {
+    	dice.rollOneDice();
+    	dice1.setText( Integer.toString(dice.getDie1()) );
+    	
 
     	//dice1.setText(Integer.toString(dice.getDie1()));
-//    	BattleText.setText(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
-//    	
-//        File file = new File("/../../dice" + dice.getDie1() + ".png");
-//        Image image = new Image(file.toURI().toString());
-//        diceImage.setImage(image);
+    	BattleText.setText(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
     	
+        File file = new File("/../../images/dice" + dice.getDie1() + ".png");
+        Image image = new Image(file.toURI().toString());
+        diceImage.setImage(image);
 
-    	
-    	defendButton.setDisable(true);
-
-        Thread thread = new Thread(){
-            public void run(){
-                System.out.println("Thread Running");
-                try {
-                    for (int i = 0; i < 15; i++) {
-                    	dice.rollOneDice();
-                    	dice1.setText( Integer.toString(dice.getDie1()) );
-                        File file = new File("/../../dice" + dice.getDie1() +".png");
-                        diceImage.setImage(new Image(file.toURI().toString()));
-                        Thread.sleep(50);
-                    }
-                    defendButton.setDisable(false);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        thread.start();
     }
     
     @FXML
