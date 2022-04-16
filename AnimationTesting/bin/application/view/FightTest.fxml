@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -10,37 +11,70 @@
    <children>
       <ImageView fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@BattleBack.png" />
+            <Image url="@battleBackground.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="sanic" fitHeight="150.0" fitWidth="200.0" layoutX="21.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="sanic" fitHeight="150.0" fitWidth="200.0" layoutX="113.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@sanic.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="goomba" fitHeight="150.0" fitWidth="200.0" layoutX="630.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="goomba" fitHeight="150.0" fitWidth="200.0" layoutX="540.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@goomba.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="sword" fitHeight="78.0" fitWidth="74.0" layoutX="142.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="sword" fitHeight="78.0" fitWidth="74.0" layoutX="234.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pixelsword.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="basicAttackButton" layoutX="113.0" layoutY="550.0" mnemonicParsing="false" onAction="#bAttack" text="Strike" />
-      <ImageView fx:id="heal" fitHeight="150.0" fitWidth="200.0" layoutX="21.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="heal" fitHeight="150.0" fitWidth="200.0" layoutX="113.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@heal.gif" />
          </image>
       </ImageView>
-      <Button fx:id="healButton" layoutX="307.0" layoutY="550.0" mnemonicParsing="false" onAction="#healing" text="Heal" />
-      <Button fx:id="defendBtn" layoutX="385.0" layoutY="550.0" mnemonicParsing="false" onAction="#defendHero" text="Defend" />
-      <ImageView fx:id="shield" fitHeight="94.0" fitWidth="99.0" layoutX="142.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="shield" fitHeight="94.0" fitWidth="99.0" layoutX="234.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@hylianShield.png" />
          </image>
       </ImageView>
-      <Button fx:id="multiAttackButton" layoutX="189.0" layoutY="550.0" mnemonicParsing="false" onAction="#mAttack" text="Multi strike" />
+      <ImageView fitHeight="172.0" fitWidth="800.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@battleTextBox.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="172.0" fitWidth="536.0" layoutX="40.0" layoutY="590.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/AppProject/Images/battleButtons.png" />
+         </image>
+      </ImageView>
+      <GridPane alignment="TOP_CENTER" layoutX="70.0" layoutY="601.0" prefHeight="119.0" prefWidth="506.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="basicAttackButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#bAttack" text="Strike" />
+            <Button fx:id="multiAttackButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#mAttack" text="Multi strike" GridPane.columnIndex="1" />
+            <Button fx:id="healButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#healing" text="Heal" GridPane.rowIndex="1" />
+            <Button fx:id="defendBtn" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#defendHero" text="Defend" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <ImageView fitHeight="150.0" fitWidth="346.0" layoutX="23.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@battleHPbox.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="346.0" layoutX="440.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@battleHPbox.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="800.0" />
    </children>
 </AnchorPane>
