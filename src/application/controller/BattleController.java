@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 
 import application.model.Champions;
 import application.model.Monster;
@@ -75,6 +76,9 @@ public class BattleController {
     
     @FXML
     private Label playerHealth;
+    
+    Random random = new Random();
+
     
     //ARNOLD PART //This is where I will put the players name but it is set at the moment
 	Person DiceHero = new Person("DiceHero",10, 10, 0, 10); //Person is different from 
@@ -167,16 +171,38 @@ public class BattleController {
     
     @FXML
     void sceneAction2(ActionEvent event) {
-    	dice.rollOneDice();
-    	dice1.setText( Integer.toString(dice.getDie1()) );
+//    	dice.rollOneDice();
+//    	dice1.setText( Integer.toString(dice.getDie1()) );
 
     	//dice1.setText(Integer.toString(dice.getDie1()));
-    	BattleText.setText(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
+//    	BattleText.setText(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
+//    	
+//        File file = new File("/../../dice" + dice.getDie1() + ".png");
+//        Image image = new Image(file.toURI().toString());
+//        diceImage.setImage(image);
     	
-        File file = new File("/../../dice" + dice.getDie1() + ".png");
-        Image image = new Image(file.toURI().toString());
-        diceImage.setImage(image);
+    	
+    	defendButton.setDisable(true);
 
+        Thread thread = new Thread(){
+            public void run(){
+                System.out.println("Thread Running");
+                try {
+                    for (int i = 0; i < 15; i++) {
+                    	dice.rollOneDice();
+                    	dice1.setText( Integer.toString(dice.getDie1()) );
+                        File file = new File("/../../dice" + dice.getDie1() +".png");
+                        diceImage.setImage(new Image(file.toURI().toString()));
+                        Thread.sleep(50);
+                    }
+                    defendButton.setDisable(false);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        thread.start();
     }
     
     @FXML
