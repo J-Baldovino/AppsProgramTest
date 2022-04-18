@@ -29,6 +29,9 @@ public class FightController implements Initializable{
     private TranslateTransition translateSanic = new TranslateTransition();
     private FadeTransition fadeGoomba = new FadeTransition();
     private FadeTransition fadeHeal = new FadeTransition();
+    private FadeTransition fadeSword1 = new FadeTransition();
+    private FadeTransition fadeSword2 = new FadeTransition();
+    private FadeTransition fadeShield = new FadeTransition();
     private TranslateTransition translateShield = new TranslateTransition();
 
     @FXML
@@ -40,6 +43,7 @@ public class FightController implements Initializable{
     	rotateSword1.play();
     	translateGoomba.play();
     	translateSanic.play();
+    	fadeSword1.play();
     	//fadeGoomba.play();
     }
     
@@ -52,6 +56,15 @@ public class FightController implements Initializable{
     	rotateSword2.play();
     	translateGoomba.play();
     	translateSanic.play();
+    	try {
+    		//translateShield.play();
+    		wait(50);
+    		
+    		//fadeShield.play();
+    	}
+    	catch(Exception e){
+    	}
+    	fadeSword1.play();
     	//fadeGoomba.play();
     }
     
@@ -65,11 +78,20 @@ public class FightController implements Initializable{
     }
     
     @FXML
-    void defendHero(ActionEvent event) {
+    public synchronized void defendHero(ActionEvent event) {
     	sword.setVisible(false);
     	heal.setVisible(false);
     	shield.setVisible(true);
     	translateShield.play();
+    	try {
+    		//translateShield.play();
+    		wait(50);
+    		
+    		//fadeShield.play();
+    	}
+    	catch(Exception e){
+    	}
+    	fadeShield.play();
     }
     
     @Override
@@ -77,6 +99,8 @@ public class FightController implements Initializable{
     	sword.setVisible(false); //start the sword as not visible
     	heal.setVisible(false);
     	shield.setVisible(false);
+    	
+    	
     	
     	//Preparing rotation movement for basic sword
     	rotateSword1.setNode(sword);
@@ -112,7 +136,7 @@ public class FightController implements Initializable{
 
 		//preparing translation movement for shield
 		translateShield.setNode(shield);
-		translateShield.setDuration(Duration.millis(200));
+		translateShield.setDuration(Duration.millis(250));
 		translateShield.setCycleCount(2);
 		translateShield.setByY(-40);
 		translateShield.setAutoReverse(true);
@@ -147,6 +171,33 @@ public class FightController implements Initializable{
 		fadeHeal.setAutoReverse(true);
 		fadeHeal.setFromValue(0); //original opacity value
 		fadeHeal.setToValue(1);	//target opacity value
+		
+		//Preparing fade animation for shield
+		fadeShield.setNode(shield);
+		fadeShield.setDuration(Duration.millis(500));
+		fadeShield.setCycleCount(2);
+		fadeShield.setInterpolator(Interpolator.EASE_OUT); //Causes the animation to slow down near the end of the sequence
+		fadeShield.setAutoReverse(true);
+		fadeShield.setFromValue(0); //original opacity value
+		fadeShield.setToValue(1);	//target opacity value
+		
+		//Preparing fade animation for sword
+		fadeSword1.setNode(sword);
+		fadeSword1.setDuration(Duration.millis(400));
+		fadeSword1.setCycleCount(2);
+		fadeSword1.setInterpolator(Interpolator.EASE_OUT); //Causes the animation to slow down near the end of the sequence
+		fadeSword1.setAutoReverse(true);
+		fadeSword1.setFromValue(0); //original opacity value
+		fadeSword1.setToValue(1);	//target opacity value
+		
+		//Preparing fade animation for sword
+		fadeSword2.setNode(sword);
+		fadeSword2.setDuration(Duration.millis(400));
+		fadeSword2.setCycleCount(2);
+		fadeSword2.setInterpolator(Interpolator.EASE_OUT); //Causes the animation to slow down near the end of the sequence
+		fadeSword2.setAutoReverse(true);
+		fadeSword2.setFromValue(0); //original opacity value
+		fadeSword2.setToValue(1);	//target opacity value
     }
 
 }
