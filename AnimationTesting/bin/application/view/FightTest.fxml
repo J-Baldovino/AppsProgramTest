@@ -14,6 +14,7 @@
             <Image url="@battleBackground.jpg" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="800.0" />
       <ImageView fx:id="sanic" fitHeight="150.0" fitWidth="200.0" layoutX="113.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@sanic.png" />
@@ -75,6 +76,5 @@
             <Image url="@battleHPbox.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="800.0" />
    </children>
 </AnchorPane>

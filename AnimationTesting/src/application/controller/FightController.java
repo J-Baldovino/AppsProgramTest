@@ -61,7 +61,6 @@ public class FightController implements Initializable{
     	heal.setVisible(true);
     	shield.setVisible(false);
     	fadeHeal.play();
-    	
     }
     
     @FXML
