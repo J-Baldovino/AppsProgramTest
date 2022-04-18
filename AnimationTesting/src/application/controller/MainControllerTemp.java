@@ -23,7 +23,7 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class MainController implements Initializable{
+public class MainControllerTemp implements Initializable{
 	@FXML
 	private AnchorPane mainPane;
 	

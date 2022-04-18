@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
 //Testing
 
-public class Main extends Application {
+public class MainTemp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
