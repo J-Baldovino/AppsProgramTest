@@ -63,7 +63,7 @@
          <children>
             <Button fx:id="basicAttackButton" alignment="CENTER" contentDisplay="BOTTOM" minHeight="116.0" mnemonicParsing="false" onAction="#bAttack" prefHeight="129.0" prefWidth="394.0" style="-fx-border-color: white; -fx-background-color: #fe1810;" text="Strike" textFill="WHITE">
                <font>
-                  <Font name="Tw Cen MT" size="34.0" />
+                  <Font name="Book Antiqua Bold" size="34.0" />
                </font></Button>
             <Button fx:id="multiAttackButton" alignment="CENTER" contentDisplay="BOTTOM" minHeight="116.0" mnemonicParsing="false" onAction="#mAttack" prefHeight="116.0" prefWidth="408.0" style="-fx-border-color: white; -fx-background-color: #fe1810;" text="Multi strike" textFill="WHITE" GridPane.columnIndex="1">
                <font>
