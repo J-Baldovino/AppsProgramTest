@@ -4,8 +4,14 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import application.inter.Toutput;
 import application.model.StageCounter;
+import application.model.WriteOn;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -21,6 +27,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class StageController {
+	
+	WriteOn anim;
 	
 	MediaPlayer mp;
 	MediaPlayer smp;
@@ -61,19 +69,13 @@ public class StageController {
     }
     
     @FXML
-    private void initialize() throws MalformedURLException
+    private void initialize() throws MalformedURLException, InterruptedException
     {
-    	
     	handB.setVisible(false);
+    	battleB.setVisible(false);
     	
-    	sT.setText("Stage "+StageCounter.getStagec());
-    	
-    	File media = new File("music/boom.mp3");
-        Media song = new Media(media.toURI().toURL().toString());
-        mp= new MediaPlayer(song);
-        mp.setVolume(0.1);
-        mp.play();
-    	
+    	textSet();
+       
     }
 
     @FXML
@@ -91,6 +93,80 @@ public class StageController {
     void bDeselect(MouseEvent event) {
     	handB.setVisible(false);
     	smp.stop();
+    }
+    
+    void textSet() throws InterruptedException
+    {
+    	Task<Void> sleeper = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                }
+                return null;
+            }
+        };
+        
+        Task<Void> bSleeper = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                }
+                return null;
+            }
+        };
+        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) { 
+		          String send="Stage "+StageCounter.getStagec();
+		          textAnim(send);
+		          Thread thread = new Thread(anim);
+		          thread.start();
+		        
+				
+             
+            }
+        });
+        
+        bSleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) { 
+				try {
+					File media = new File("music/boom.mp3");
+					Media song;
+					song = new Media(media.toURI().toURL().toString());
+					mp= new MediaPlayer(song);
+		            mp.setVolume(0.1);
+		            mp.play();
+		            battleB.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+             
+            }
+        });
+        new Thread(sleeper).start();
+        new Thread(bSleeper).start();
+    }
+    
+    void textAnim(String txt)
+    {
+    	Toutput tOut = new Toutput() {
+            @Override
+            public void writeText(String textOut) {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        sT.setText(textOut);
+                    }
+                });
+            }
+        };
+
+         anim= new WriteOn(txt,60, tOut);
     }
 
 }

@@ -62,6 +62,7 @@ public class TitleController {
     	{
     		MusicManager.loadSong("music/title.mp3");
         	MusicManager.playS();
+        	StageCounter.setStagec(1);
     	}
     	
     }

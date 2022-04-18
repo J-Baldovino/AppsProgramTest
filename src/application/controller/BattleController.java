@@ -57,11 +57,10 @@ public class BattleController {
         mp.setVolume(0.1);
         mp.play();
         
-    	
     }
 
     @FXML
-    void sceneWin(ActionEvent event) {
+    void sceneWin(ActionEvent event) throws InterruptedException {
     	mp.stop();
     	try {
     		URL url = new File("Victory.fxml").toURI().toURL();
