@@ -66,14 +66,14 @@
             <Button fx:id="defendBtn" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#defendHero" text="Defend" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <ImageView fitHeight="150.0" fitWidth="346.0" layoutX="23.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="346.0" layoutX="22.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@battleHPbox.png" />
+            <Image url="@battleMessage.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="346.0" layoutX="440.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="346.0" layoutX="428.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@battleHPbox.png" />
+            <Image url="@battleMessage.png" />
          </image>
       </ImageView>
    </children>
