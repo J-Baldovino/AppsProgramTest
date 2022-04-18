@@ -27,7 +27,7 @@ public class FightController implements Initializable{
     private RotateTransition rotateSword2 = new RotateTransition();
     private TranslateTransition translateGoomba = new TranslateTransition();
     private TranslateTransition translateSanic = new TranslateTransition();
-    private FadeTransition fadeGoomba = new FadeTransition();
+    //private FadeTransition fadeGoomba = new FadeTransition();
     private FadeTransition fadeHeal = new FadeTransition();
     private FadeTransition fadeSword1 = new FadeTransition();
     private FadeTransition fadeSword2 = new FadeTransition();
@@ -74,7 +74,6 @@ public class FightController implements Initializable{
     	heal.setVisible(true);
     	shield.setVisible(false);
     	fadeHeal.play();
-    	
     }
     
     @FXML
@@ -114,8 +113,8 @@ public class FightController implements Initializable{
 		translateSword1.setNode(sword);
 		translateSword1.setDuration(Duration.millis(200));
 		translateSword1.setCycleCount(2);
-		translateSword1.setByX(500); //moves the image to the right by 500 pixels
-		translateSword1.setByY(-200); //moves the image up by 200 pixels
+		translateSword1.setByX(350); //moves the image to the right by 500 pixels
+		translateSword1.setByY(-120); //moves the image up by 200 pixels
 		translateSword1.setAutoReverse(true);
 		
 		//Preparing rotation movement for multi sword
@@ -130,8 +129,8 @@ public class FightController implements Initializable{
 		translateSword2.setNode(sword);
 		translateSword2.setDuration(Duration.millis(200));
 		translateSword2.setCycleCount(6);
-		translateSword2.setByX(500); //moves the image to the right by 500 pixels
-		translateSword2.setByY(-200); //moves the image up by 200 pixels
+		translateSword2.setByX(350); //moves the image to the right by 500 pixels
+		translateSword2.setByY(-120); //moves the image up by 200 pixels
 		translateSword2.setAutoReverse(true);
 
 		//preparing translation movement for shield
