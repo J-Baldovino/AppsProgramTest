@@ -90,7 +90,7 @@ public class BattleController {
     
     //ARNOLD PART //This is where I will put the players name but it is set at the moment
 	Person DiceHero = new Person(10, 10, 0, 10); //Person is different from 
-	TwoDice dice = new TwoDice();
+//	TwoDice dice = new TwoDice();
 	ArrayList<Monster> list = new ArrayList<>();
     
     @FXML
@@ -109,7 +109,7 @@ public class BattleController {
         mp.setVolume(0.1);
         mp.play();
         
-		dice.roll();
+//		dice.roll();
 		Monster gremlin;
 		gremlin = new Monster("Gremlin", 10, 3);
 		list.add(gremlin);
@@ -170,27 +170,27 @@ public class BattleController {
     
     @FXML
     void sceneAction1(ActionEvent event) {
-    	dice.roll();
-		System.out.println("Dice one: " + dice.getDie1() + " Dice two: " + dice.getDie2());
-		System.out.println(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
-		
-		//System.out.println(DiceHero.takeDamage(list.get(0).getAttackPower()));
-		System.out.println();
-		
-		if(DiceHero.getHealth() <= 0)
-		{
-			System.out.println( "NAME has died has died"); //DiceHero.getName() was removed
-		}
-		if(list.get(0).getHealth() <= 0)
-		{
-			System.out.println(list.get(0).getName() + " has died" );
-		}
-		
-		//System.out.println(DiceHero.getName() + " has " + DiceHero.getHealth() + " hp");
-		System.out.println(list.get(0).getName() + " has " + list.get(0).getHealth() + " hp");
-    	
-		
-		playerHealth.setText(DiceHero.getHealthRatio());
+//    	dice.roll();
+//		System.out.println("Dice one: " + dice.getDie1() + " Dice two: " + dice.getDie2());
+//		System.out.println(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
+//		
+//		//System.out.println(DiceHero.takeDamage(list.get(0).getAttackPower()));
+//		System.out.println();
+//		
+//		if(DiceHero.getHealth() <= 0)
+//		{
+//			System.out.println( "NAME has died has died"); //DiceHero.getName() was removed
+//		}
+//		if(list.get(0).getHealth() <= 0)
+//		{
+//			System.out.println(list.get(0).getName() + " has died" );
+//		}
+//		
+//		//System.out.println(DiceHero.getName() + " has " + DiceHero.getHealth() + " hp");
+//		System.out.println(list.get(0).getName() + " has " + list.get(0).getHealth() + " hp");
+//    	
+//		
+//		playerHealth.setText(DiceHero.getHealthRatio());
 		
     }
     
@@ -198,9 +198,9 @@ public class BattleController {
     @FXML
     void sceneAction2(ActionEvent event) {
     	
-        list.get(0).takeDamage(rollingFunction());
-        System.out.println("The monster's hp is now = " + Integer.toString(list.get(0).getHealth()) + " the thread is fucking me here please help God");
-        //EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
+        System.out.println( list.get(0).takeDamage(rollingFunction()) );
+        System.out.println("The monster's hp is now = " + Integer.toString(list.get(0).getHealth()) + "\n");// + " the thread is fucking me here please help God");
+        EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
         
     }
     
@@ -234,15 +234,16 @@ public class BattleController {
     
     public int rollingFunction(){
     	defendButton.setDisable(true);
-
+    	TwoDice dice = new TwoDice();
         Thread thread = new Thread(){
             public void run(){
-                System.out.println("Thread Running");
+                //System.out.println("Thread Running");
                 try {
-                    for (int i = 0; i < 15; i++) {
+                    for (int i = 0; i <= 15; i++) {
                     	dice.rollOneDice();
                     	dice1.setText( Integer.toString(dice.getDie1()) );
                         File file = new File("/../../images/dice" + dice.getDie1() +".png");
+                        System.out.print(dice.getDie1() + " ");
                         diceImage.setImage(new Image(file.toURI().toString()));
                         Thread.sleep(50);
                     }
@@ -253,9 +254,13 @@ public class BattleController {
             }
         };
         thread.start();
+
+        while(thread.isAlive())
+        {	
+        }
         
-    	return dice.getDie1();
-    }
+        return dice.getDie1();
+   }
 
 }
 
