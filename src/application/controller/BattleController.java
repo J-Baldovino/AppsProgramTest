@@ -218,6 +218,9 @@ public class BattleController {
                         File file = new File("/../../images/dice" + dice.getDie1() +".png");
                         diceImage.setImage(new Image(file.toURI().toString()));
                         Thread.sleep(50);
+                        int t = dice.getDie1();
+                        
+                        System.out.println("INT T = " + t);
                     }
                     defendButton.setDisable(false);
                 } catch (InterruptedException e) {
