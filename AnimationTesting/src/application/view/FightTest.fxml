@@ -63,19 +63,19 @@
          <children>
             <Button fx:id="basicAttackButton" alignment="CENTER" contentDisplay="BOTTOM" minHeight="116.0" mnemonicParsing="false" onAction="#bAttack" prefHeight="129.0" prefWidth="394.0" style="-fx-border-color: white; -fx-background-color: #fe1810;" text="Strike" textFill="WHITE">
                <font>
-                  <Font name="Book Antiqua Bold" size="34.0" />
+                  <Font name="Upheaval TT -BRK-" size="45.0" />
                </font></Button>
             <Button fx:id="multiAttackButton" alignment="CENTER" contentDisplay="BOTTOM" minHeight="116.0" mnemonicParsing="false" onAction="#mAttack" prefHeight="116.0" prefWidth="408.0" style="-fx-border-color: white; -fx-background-color: #fe1810;" text="Multi strike" textFill="WHITE" GridPane.columnIndex="1">
                <font>
-                  <Font name="Stencil" size="34.0" />
+                  <Font name="Upheaval TT -BRK-" size="45.0" />
                </font></Button>
             <Button fx:id="healButton" alignment="CENTER" contentDisplay="BOTTOM" minHeight="116.0" mnemonicParsing="false" onAction="#healing" prefHeight="142.0" prefWidth="395.0" style="-fx-border-color: white; -fx-background-color: #5bf812;" text="Heal" textFill="WHITE" GridPane.rowIndex="1">
                <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="34.0" />
+                  <Font name="Upheaval TT -BRK-" size="45.0" />
                </font></Button>
             <Button fx:id="defendBtn" alignment="CENTER" contentDisplay="BOTTOM" minHeight="119.0" mnemonicParsing="false" onAction="#defendHero" prefHeight="128.0" prefWidth="393.0" style="-fx-border-color: white; -fx-background-color: #1669da;" text="Defend" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="34.0" />
+                  <Font name="Upheaval TT -BRK-" size="45.0" />
                </font></Button>
          </children>
       </GridPane>
