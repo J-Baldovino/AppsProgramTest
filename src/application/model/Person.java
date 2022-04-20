@@ -2,19 +2,21 @@ package application.model;
 
 public class Person {
 	//private String name;
-	private static int health;
-	private static int maxHealth;
-	private static int mana;
-	private static int maxMana;
+	private static int health = 10;
+	private static int maxHealth = 10;
+	private static int mana = 0;
+	private static int maxMana = 10;
 
 //constructor
-	public Person( int health, int maxHealth, int mana, int maxMana) {
-		//this.name = name;
-		Person.health = health;
-		Person.maxHealth = maxHealth;
-		Person.mana = mana;
-		Person.maxMana = maxMana;
-	}
+//int health, int maxHealth, int mana, int maxMana
+//	public Person( int health, int maxHealth, int mana, int maxMana) {
+//		//this.name = name;
+//		Person.health = health;
+//		Person.maxHealth = maxHealth;
+//		Person.mana = mana;
+//		Person.maxMana = maxMana;
+//	}
+	//Person DiceHero = new Person(10, 10, 0, 10);
 
 //setter
 	/*
@@ -46,6 +48,27 @@ public class Person {
 	
 	public int getMana() {
 		return Person.mana;
+	}
+	
+	public int addMana(int manaToAdd) {
+		Person.mana += manaToAdd;
+		if(Person.mana > maxMana)
+		{
+			Person.mana = 10; 
+		}
+		return Person.mana;
+	}
+	
+	public void subMana(int manaToSub) {
+		if(Person.mana - manaToSub < 0)
+		{
+			Person.mana = 0; 
+		}
+		else
+		{
+			Person.mana -= manaToSub;
+		}
+
 	}
 	
 	public int getMaxMana() {
@@ -125,4 +148,72 @@ public class Person {
 		return getName();
 	}
 	*/
+	
+	public void mana(int dice1) {
+    	Person.mana += dice1;
+    	
+    	if(Person.mana >= 10) {
+    		Person.mana = 10;
+    	}
+    	
+    	//Set textbox to current mana
+    
+    }
+	
+	//Need to make sure that the mana is enough
+	
+	 public int strike(int dice1) {
+//	    	//mana costs are outside of these functions
+//		 if(Person.mana >= 1) { 
+//	    	Person.mana -= 1;
+//		 }
+//		 else {
+//			 //Set textbox to NO MANA Wait for next Turn;
+//			 dice1 = 0;
+//		 }
+		 
+		 return dice1;
+	    	
+	    }
+	    
+	    public int multistrike(int dice1) {
+	    	
+//	    	if(Person.mana >= 4) {
+//	    	Person.mana -= 4;
+//	    	}
+//	    	
+//	    	else {
+//	    		//NO mana Wait for next Turn
+//	    		dice1 = 0;
+//	    	}
+	    	
+	    	return dice1 * dice1;
+	    }
+	    
+	    public int heal(int dice1) {
+	    	
+	    	if(Person.mana >= 4) {
+	    	Person.mana -= 4;
+	    	}
+	    	else {
+	    		//NO MANA WAIT FOR NEXT TURN
+	    		dice1 = 0;
+	    		
+	    	}
+	    	
+	    			return dice1;
+	    }
+	    
+	    
+	    public int defend(int dice1) {
+	    	if(Person.mana >= 2) {
+	    	Person.mana -= 2;
+	    	}
+	    	
+	    	else {
+	    		dice1 = 0;
+	    	}
+	    	
+	    	return dice1;
+	    }
 }
