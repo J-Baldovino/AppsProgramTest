@@ -75,12 +75,16 @@ public class BattleController {
     private ImageView diceImage;
     
     @FXML
+    private ImageView diceImage2;
+    
+    @FXML
     private Label playerName;
     
     @FXML
     private Label playerHealth;
     
-    Random random = new Random();
+    @FXML
+    private Label playerMana;
 
     @FXML
     private Label EnemyName;
@@ -88,8 +92,38 @@ public class BattleController {
     @FXML
     private Label EnemyHealth;
     
+    @FXML
+    private Button basicAttackButton;
+
+    @FXML
+    private Button defendBtn;
+
+    @FXML
+    private ImageView goomba;
+
+    @FXML
+    private ImageView heal;
+
+    @FXML
+    private Button healButton;
+
+    @FXML
+    private Button multiAttackButton;
+
+    @FXML
+    private ImageView sanic;
+
+    @FXML
+    private ImageView shield;
+
+    @FXML
+    private ImageView sword;
+    
+    Random random = new Random();
+    
     //ARNOLD PART //This is where I will put the players name but it is set at the moment
-	Person DiceHero = new Person(10, 10, 0, 10); //Person is different from 
+	//Person DiceHero = new Person(10, 10, 0, 10); //Person is different from 
+    
 //	TwoDice dice = new TwoDice();
 	ArrayList<Monster> list = new ArrayList<>();
     
@@ -109,6 +143,12 @@ public class BattleController {
         mp.setVolume(0.1);
         mp.play();
         
+        Person DiceHero = new Person(); //initalally get mana
+        TwoDice dice = new TwoDice();
+        dice.rollOneDice(); //dont use rolling function here
+        System.out.println(dice.getDie1());
+        DiceHero.addMana(dice.getDie1());
+        
 //		dice.roll();
 		Monster gremlin;
 		gremlin = new Monster("Gremlin", 10, 3);
@@ -117,21 +157,11 @@ public class BattleController {
 		gremlin2 = new Monster("Gremlin2", 10, 7);
 		list.add(gremlin2);
 		
-		//playerName.setText(DiceHero.getName());
-//		playerHealth.setText(DiceHero.getHealthRatio());
-		EnemyName.setText(list.get(0).getName());
-		EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
-		
-		
-		
-//		if(DiceHero.getMana() + dice.getDie1() > DiceHero.getMaxMana())
-//		{
-//			DiceHero.setMana(10);
-//		}
-//		else
-//		{
-//			DiceHero.setMana(DiceHero.getMana() + dice.getDie1());
-//		}
+		playerName.setText("Change");
+		//playerHealth.setText(DiceHero.getHealthRatio());
+//		EnemyName.setText(list.get(0).getName());
+//		EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
+		update();
 	}
 
     @FXML
@@ -168,8 +198,50 @@ public class BattleController {
 		}
     }
     
+    
     @FXML
-    void sceneAction1(ActionEvent event) {
+    void basicAttackButton(ActionEvent event) { //1 mana
+    	Person DiceHero = new Person();
+    	
+    	if(DiceHero.getMana() >= 1)
+    	{
+    	
+        System.out.println( list.get(0).takeDamage(DiceHero.basicStrike(rollingFunction())));
+        System.out.println("The monster's hp is now = " + Integer.toString(list.get(0).getHealth()) + "\n");// + " the thread is fucking me here please help God");
+        DiceHero.subMana(1);
+        update();
+        BattleText.setText("Name here your hero will be named at the start " + " has used basic strike! \n" + list.get(0).getName() + " has " +  list.get(0).getHealth() + ".");
+        
+    	}
+    	else
+    	{
+    		BattleText.setText("You do not have enough mana");
+    	}
+    }
+    
+    @FXML
+    void multiStrikeButton(ActionEvent event) {
+    	Person DiceHero = new Person();
+
+    	if(DiceHero.getMana() >= 4)
+    	{
+    		//4 mana to dice1 * dice1
+    		System.out.println( list.get(0).takeDamage(DiceHero.multistrike((rollingFunction()))));
+    		BattleText.setText("Name here your hero will be named at the start " + " has used multi-strike! " + list.get(0).getName() + " has " +  list.get(0).getHealth() + ".");
+    	}
+    	else
+    	{
+    		BattleText.setText("You do not have enough mana");
+    	}
+//    	System.out.println(DiceHero.getHealth());
+//    	DiceHero.takeDamage(1);
+    	update();
+		
+    }
+    
+    @FXML
+    void sceneAction3(ActionEvent event) {
+    	
 //    	dice.roll();
 //		System.out.println("Dice one: " + dice.getDie1() + " Dice two: " + dice.getDie2());
 //		System.out.println(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
@@ -191,23 +263,6 @@ public class BattleController {
 //    	
 //		
 //		playerHealth.setText(DiceHero.getHealthRatio());
-		
-    }
-    
-    
-    @FXML
-    void sceneAction2(ActionEvent event) {
-    	
-        System.out.println( list.get(0).takeDamage(rollingFunction()) );
-        System.out.println("The monster's hp is now = " + Integer.toString(list.get(0).getHealth()) + "\n");// + " the thread is fucking me here please help God");
-        EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
-        
-    }
-    
-    @FXML
-    void sceneAction3(ActionEvent event) {
-    	
-    	
     }
     
     
@@ -217,23 +272,32 @@ public class BattleController {
     
     @FXML
     void endTurn(ActionEvent event) {
-//    	try {
-//    		URL url = new File("Title.fxml").toURI().toURL();
-//    		URL styleUrl = new File("src/application/application.css").toURI().toURL();
-//			wC = FXMLLoader.load(url);
-//			Stage classifieds= (Stage) ((Node)event.getSource()).getScene().getWindow();
-//			Scene scene = new Scene(wC);
-//			scene.getStylesheets().add(styleUrl.toString());
-//			classifieds.setScene(scene);
-//			classifieds.show();
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		}
+    	try {
+    		URL url = new File("Title.fxml").toURI().toURL();
+    		URL styleUrl = new File("src/application/application.css").toURI().toURL();
+			wC = FXMLLoader.load(url);
+			Stage classifieds= (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene scene = new Scene(wC);
+			scene.getStylesheets().add(styleUrl.toString());
+			classifieds.setScene(scene);
+			classifieds.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     	
     }
     
+    public void update(){
+    	Person DiceHero = new Person(); //have to do this to access stats
+    	//playerName.setText("name here");
+    	playerHealth.setText(DiceHero.getHealthRatio());
+    	playerMana.setText(Integer.toString(DiceHero.getMana()));
+    	EnemyName.setText(list.get(0).getName());
+    	EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
+    }
+    
     public int rollingFunction(){
-    	defendButton.setDisable(true);
+    	basicAttackButton.setDisable(true);
     	TwoDice dice = new TwoDice();
         Thread thread = new Thread(){
             public void run(){
@@ -247,7 +311,37 @@ public class BattleController {
                         diceImage.setImage(new Image(file.toURI().toString()));
                         Thread.sleep(50);
                     }
-                    defendButton.setDisable(false);
+                    basicAttackButton.setDisable(false);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
+
+        while(thread.isAlive())
+        {	
+        }
+        
+        return dice.getDie1();
+   }
+   
+    public int rollingFunction2(){
+    	basicAttackButton.setDisable(true);
+    	TwoDice dice = new TwoDice();
+        Thread thread = new Thread(){
+            public void run(){
+                //System.out.println("Thread Running");
+                try {
+                    for (int i = 0; i <= 15; i++) {
+                    	dice.rollOneDice();
+                    	dice2.setText( Integer.toString(dice.getDie1()) );
+                        File file = new File("/../../images/dice" + dice.getDie1() +".png");
+                        System.out.print(dice.getDie1() + " ");
+                        diceImage2.setImage(new Image(file.toURI().toString()));
+                        Thread.sleep(50);
+                    }
+                    basicAttackButton.setDisable(false);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
