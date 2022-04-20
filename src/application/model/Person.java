@@ -7,6 +7,7 @@ public class Person {
 	private static int mana = 0;
 	private static int maxMana = 10;
 	private static int battlesWon = 0;
+	private static int score = 0;
 
 //constructor
 //int health, int maxHealth, int mana, int maxMana
@@ -62,11 +63,11 @@ public class Person {
 	
 	public int addMana(int manaToAdd) {
 		Person.mana += manaToAdd;
-		if(Person.mana > maxMana)
+		if(Person.mana >= maxMana)
 		{
 			Person.mana = 10; 
 		}
-		return Person.mana;
+		return manaToAdd;
 	}
 	
 	public void subMana(int manaToSub) {
