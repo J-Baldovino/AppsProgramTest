@@ -154,13 +154,13 @@ public class BattleController {
 		gremlin = new Monster("Gremlin", 10, 3);
 		list.add(gremlin);
 		Monster gremlin2;
-		gremlin2 = new Monster("Gremlin2", 10, 7);
+		gremlin2 = new Monster("Goblin", 11, 7);
 		list.add(gremlin2);
 		
 		playerName.setText("Change");
 		//playerHealth.setText(DiceHero.getHealthRatio());
-//		EnemyName.setText(list.get(0).getName());
-//		EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
+//		EnemyName.setText(list.get(DiceHero.getBattlesWon()).getName());
+//		EnemyHealth.setText(Integer.toString(list.get(DiceHero.getBattlesWon()).getHealth()));
 		update();
 	}
 
@@ -206,11 +206,11 @@ public class BattleController {
     	if(DiceHero.getMana() >= 1)
     	{
     	
-        System.out.println( list.get(0).takeDamage(DiceHero.basicStrike(rollingFunction())));
-        System.out.println("The monster's hp is now = " + Integer.toString(list.get(0).getHealth()) + "\n");// + " the thread is fucking me here please help God");
+        System.out.println( list.get(DiceHero.getBattlesWon()).takeDamage(DiceHero.basicStrike(rollingFunction())));
+        System.out.println("The monster's hp is now = " + Integer.toString(list.get(DiceHero.getBattlesWon()).getHealth()) + "\n");// + " the thread is fucking me here please help God");
         DiceHero.subMana(1);
         update();
-        BattleText.setText("Name here your hero will be named at the start " + " has used basic strike! \n" + list.get(0).getName() + " has " +  list.get(0).getHealth() + ".");
+        BattleText.setText("Name here your hero will be named at the start " + " has used basic strike! \n" + list.get(DiceHero.getBattlesWon()).getName() + " has " +  list.get(DiceHero.getBattlesWon()).getHealth() + ".");
         
     	}
     	else
@@ -226,8 +226,8 @@ public class BattleController {
     	if(DiceHero.getMana() >= 4)
     	{
     		//4 mana to dice1 * dice1
-    		System.out.println( list.get(0).takeDamage(DiceHero.multistrike((rollingFunction()))));
-    		BattleText.setText("Name here your hero will be named at the start " + " has used multi-strike! " + list.get(0).getName() + " has " +  list.get(0).getHealth() + ".");
+    		System.out.println( list.get(DiceHero.getBattlesWon()).takeDamage(DiceHero.multistrike((rollingFunction()))));
+    		BattleText.setText("Name here your hero will be named at the start " + " has used multi-strike! " + list.get(DiceHero.getBattlesWon()).getName() + " has " +  list.get(DiceHero.getBattlesWon()).getHealth() + ".");
     	}
     	else
     	{
@@ -244,22 +244,22 @@ public class BattleController {
     	rollingFunction();
 //    	dice.roll();
 //		System.out.println("Dice one: " + dice.getDie1() + " Dice two: " + dice.getDie2());
-//		System.out.println(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
+//		System.out.println(list.get(DiceHero.getBattlesWon()).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
 //		
-//		//System.out.println(DiceHero.takeDamage(list.get(0).getAttackPower()));
+//		//System.out.println(DiceHero.takeDamage(list.get(DiceHero.getBattlesWon()).getAttackPower()));
 //		System.out.println();
 //		
 //		if(DiceHero.getHealth() <= 0)
 //		{
 //			System.out.println( "NAME has died has died"); //DiceHero.getName() was removed
 //		}
-//		if(list.get(0).getHealth() <= 0)
+//		if(list.get(DiceHero.getBattlesWon()).getHealth() <= 0)
 //		{
-//			System.out.println(list.get(0).getName() + " has died" );
+//			System.out.println(list.get(DiceHero.getBattlesWon()).getName() + " has died" );
 //		}
 //		
 //		//System.out.println(DiceHero.getName() + " has " + DiceHero.getHealth() + " hp");
-//		System.out.println(list.get(0).getName() + " has " + list.get(0).getHealth() + " hp");
+//		System.out.println(list.get(DiceHero.getBattlesWon()).getName() + " has " + list.get(DiceHero.getBattlesWon()).getHealth() + " hp");
 //    	
 //		
 //		playerHealth.setText(DiceHero.getHealthRatio());
@@ -279,7 +279,7 @@ public class BattleController {
     	DiceHero.setBattlesWon();
     	
     	try {
-    		URL url = new File("Title.fxml").toURI().toURL();
+    		URL url = new File("Stage.fxml").toURI().toURL();
     		URL styleUrl = new File("src/application/application.css").toURI().toURL();
 			wC = FXMLLoader.load(url);
 			Stage classifieds= (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -298,8 +298,8 @@ public class BattleController {
     	//playerName.setText("name here");
     	playerHealth.setText(DiceHero.getHealthRatio());
     	playerMana.setText(Integer.toString(DiceHero.getMana()));
-    	EnemyName.setText(list.get(0).getName());
-    	EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
+    	EnemyName.setText(list.get(DiceHero.getBattlesWon()).getName());
+    	EnemyHealth.setText(Integer.toString(list.get(DiceHero.getBattlesWon()).getHealth()));
     }
     
     public int rollingFunction(){
