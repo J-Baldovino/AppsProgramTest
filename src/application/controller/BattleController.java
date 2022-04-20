@@ -274,7 +274,31 @@ public class BattleController {
     
     
     @FXML
-    void endTurn(ActionEvent event) {
+    void endTurn(ActionEvent event) throws InterruptedException {
+    	Person DiceHero = new Person();
+    	TwoDice dice = new TwoDice();
+    	if(endTurn.getText().equals("End Turn"))
+    	{
+//    	BattleText.setText(list.get(DiceHero.getBattlesWon()).getName() + "'s turn" );
+    	Thread.sleep(1000); //small delay 
+    	//System.out.println(list.get(DiceHero.getBattlesWon()).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(DiceHero.getBattlesWon()).getAttackPower());
+    	BattleText.setText(list.get(DiceHero.getBattlesWon()).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(DiceHero.getBattlesWon()).getAttackPower());
+    	DiceHero.takeDamage(list.get(DiceHero.getBattlesWon()).getAttackPower());
+    	endTurn.setText("Start turn");
+    	}
+    	else
+    	{
+    		DiceHero.addMana(rollingFunction());
+    		BattleText.setText("Hero's name turn! Hero's name gains " + dice.getDie1() + " mana!");
+    		endTurn.setText("End Turn");
+    		
+    	}
+    	update();
+    	
+    }
+    
+    @FXML
+    void battleWonScene(ActionEvent event) {
     	Person DiceHero = new Person();
     	DiceHero.setBattlesWon();
     	

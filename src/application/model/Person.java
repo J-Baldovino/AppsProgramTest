@@ -7,6 +7,7 @@ public class Person {
 	private static int mana = 0;
 	private static int maxMana = 10;
 	private static int battlesWon = 0;
+	private static int score = 0;
 
 //constructor
 //int health, int maxHealth, int mana, int maxMana
