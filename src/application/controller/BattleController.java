@@ -13,6 +13,7 @@ import application.model.Person;
 import application.model.TwoDice;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
+import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -123,6 +124,7 @@ public class BattleController{
     //private FadeTransition fadeGoomba = new FadeTransition();
     private FadeTransition fadeHeal = new FadeTransition();
     private TranslateTransition translateShield = new TranslateTransition();
+    private FadeTransition fadeSword = new FadeTransition();
 
     Random random = new Random();
     
@@ -243,6 +245,14 @@ public class BattleController{
 		fadeHeal.setAutoReverse(true);
 		fadeHeal.setFromValue(0); //original opacity value
 		fadeHeal.setToValue(1);	//target opacity value
+		
+		//Preparing fade animation for sword
+		fadeSword.setNode(sword);
+		fadeSword.setDuration(Duration.millis(2000));
+		fadeSword.setCycleCount(1);
+		fadeSword.setInterpolator(Interpolator.EASE_OUT); //Causes the animation to slow down near the end of the sequence
+		fadeSword.setFromValue(1); //original opacity value
+		fadeSword.setToValue(0);	//target opacity value
 
 	}
 
@@ -308,6 +318,7 @@ public class BattleController{
     	rotateSword1.play();
     	translateGoomba.play();
     	translateSanic.play();
+    	fadeSword.play();
 
     }
     
@@ -337,7 +348,7 @@ public class BattleController{
     	rotateSword2.play();
     	translateGoomba.play();
     	translateSanic.play();
-
+    	fadeSword.play();
     }
     
     @FXML
