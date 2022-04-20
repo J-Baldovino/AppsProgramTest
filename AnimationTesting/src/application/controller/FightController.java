@@ -13,7 +13,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.transform.Rotate;
+import javafx.animation.Animation;
+import javafx.scene.Node;
 import javafx.util.Duration;
+
+/*public void animate() {
+	
+	init();
+	
+	Animation exitAnimation = animateExit();
+	Animation sharedAnimation = animateSharedNodes();
+	Animation entranceAnimation = animateEntrance();
+	exitAnimation.setOnFinished(finish -> sharedAnimation.play());
+	sharedAnimation.setOnFinished(finish -> entranceAnimation.play());
+	entranceAnimation.setOnFinished(finish -> end());
+	exitAnimation.play();
+}*/
 
 public class FightController implements Initializable{
     @FXML
@@ -52,20 +67,12 @@ public class FightController implements Initializable{
     	sword.setVisible(true);
     	heal.setVisible(false);
     	shield.setVisible(false);
-    	translateSword2.play();
+    	//translateSword2.play();
     	rotateSword2.play();
     	translateGoomba.play();
     	translateSanic.play();
-    	try {
-    		//translateShield.play();
-    		wait(50);
-    		
-    		//fadeShield.play();
-    	}
-    	catch(Exception e){
-    	}
-    	fadeSword1.play();
-    	//fadeGoomba.play();
+    	translateSword2.play();
+        fadeSword2.play();
     }
     
     @FXML
@@ -82,14 +89,6 @@ public class FightController implements Initializable{
     	heal.setVisible(false);
     	shield.setVisible(true);
     	translateShield.play();
-    	try {
-    		//translateShield.play();
-    		wait(50);
-    		
-    		//fadeShield.play();
-    	}
-    	catch(Exception e){
-    	}
     	fadeShield.play();
     }
     
@@ -189,9 +188,9 @@ public class FightController implements Initializable{
 		fadeSword1.setFromValue(0); //original opacity value
 		fadeSword1.setToValue(1);	//target opacity value
 		
-		//Preparing fade animation for sword
+		//Preparing fade animation for multi sword
 		fadeSword2.setNode(sword);
-		fadeSword2.setDuration(Duration.millis(400));
+		fadeSword2.setDuration(Duration.millis(800));
 		fadeSword2.setCycleCount(2);
 		fadeSword2.setInterpolator(Interpolator.EASE_OUT); //Causes the animation to slow down near the end of the sequence
 		fadeSword2.setAutoReverse(true);
