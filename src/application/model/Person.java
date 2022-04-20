@@ -63,11 +63,11 @@ public class Person {
 	
 	public int addMana(int manaToAdd) {
 		Person.mana += manaToAdd;
-		if(Person.mana > maxMana)
+		if(Person.mana >= maxMana)
 		{
 			Person.mana = 10; 
 		}
-		return Person.mana;
+		return manaToAdd;
 	}
 	
 	public void subMana(int manaToSub) {
