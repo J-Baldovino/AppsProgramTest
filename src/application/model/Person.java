@@ -6,6 +6,7 @@ public class Person {
 	private static int maxHealth = 10;
 	private static int mana = 0;
 	private static int maxMana = 10;
+	private static int battlesWon = 0;
 
 //constructor
 //int health, int maxHealth, int mana, int maxMana
@@ -31,6 +32,11 @@ public class Person {
 	public int setMana(int manaGain) {
 		return Person.mana;
 	}
+	
+	public void setBattlesWon() {
+		Person.battlesWon++;
+		//return Person.mana;
+	}
 
 	// getter
 	/*
@@ -40,6 +46,10 @@ public class Person {
 */
 	public int getHealth() {
 		return Person.health;
+	}
+	
+	public int getBattlesWon() {
+		return Person.battlesWon;
 	}
 	
 	public int getMaxHealth() {

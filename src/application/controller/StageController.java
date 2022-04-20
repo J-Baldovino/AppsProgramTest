@@ -4,12 +4,14 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import application.model.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -31,6 +33,9 @@ public class StageController {
 
     @FXML
     private Button battleB;
+    
+    @FXML
+    private Label stageNumber;
     
     @FXML
     void bS(ActionEvent event) throws MalformedURLException {
@@ -65,6 +70,11 @@ public class StageController {
         mp= new MediaPlayer(song);
         mp.setVolume(0.1);
         mp.play();
+        
+        
+        Person DiceHero = new Person();
+
+        stageNumber.setText("Stage " + Integer.toString( DiceHero.getBattlesWon() + 1 ));
     	
     }
 

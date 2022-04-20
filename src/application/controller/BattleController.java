@@ -240,8 +240,8 @@ public class BattleController {
     }
     
     @FXML
-    void sceneAction3(ActionEvent event) {
-    	
+    void healButton(ActionEvent event) {
+    	rollingFunction();
 //    	dice.roll();
 //		System.out.println("Dice one: " + dice.getDie1() + " Dice two: " + dice.getDie2());
 //		System.out.println(list.get(0).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
@@ -265,13 +265,19 @@ public class BattleController {
 //		playerHealth.setText(DiceHero.getHealthRatio());
     }
     
-    
+    @FXML
+    void defendButton(ActionEvent event) {
+    	
+    }
     
     
     
     
     @FXML
     void endTurn(ActionEvent event) {
+    	Person DiceHero = new Person();
+    	DiceHero.setBattlesWon();
+    	
     	try {
     		URL url = new File("Title.fxml").toURI().toURL();
     		URL styleUrl = new File("src/application/application.css").toURI().toURL();
@@ -298,6 +304,10 @@ public class BattleController {
     
     public int rollingFunction(){
     	basicAttackButton.setDisable(true);
+    	multiAttackButton.setDisable(true);
+    	healButton.setDisable(true);
+    	defendButton.setDisable(true);
+    	
     	TwoDice dice = new TwoDice();
         Thread thread = new Thread(){
             public void run(){
@@ -309,9 +319,12 @@ public class BattleController {
                         File file = new File("/../../images/dice" + dice.getDie1() +".png");
                         System.out.print(dice.getDie1() + " ");
                         diceImage.setImage(new Image(file.toURI().toString()));
-                        Thread.sleep(50);
+                        Thread.sleep(100);
                     }
                     basicAttackButton.setDisable(false);
+                	multiAttackButton.setDisable(false);
+                	healButton.setDisable(false);
+                	defendButton.setDisable(false);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -328,6 +341,10 @@ public class BattleController {
    
     public int rollingFunction2(){
     	basicAttackButton.setDisable(true);
+    	multiAttackButton.setDisable(true);
+    	healButton.setDisable(true);
+    	defendButton.setDisable(true);
+    	
     	TwoDice dice = new TwoDice();
         Thread thread = new Thread(){
             public void run(){
@@ -342,6 +359,9 @@ public class BattleController {
                         Thread.sleep(50);
                     }
                     basicAttackButton.setDisable(false);
+                	multiAttackButton.setDisable(false);
+                	healButton.setDisable(false);
+                	defendButton.setDisable(false);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
