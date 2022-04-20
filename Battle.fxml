@@ -68,8 +68,8 @@
          <children>
             <Button fx:id="basicAttackButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#basicAttackButton" text="Strike" />
             <Button fx:id="multiAttackButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#multiStrikeButton" text="Multi strike" GridPane.columnIndex="1" />
-            <Button fx:id="healButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" text="Heal" GridPane.rowIndex="1" />
-            <Button fx:id="defendBtn" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" text="Defend" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="healButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#healButton" text="Heal" GridPane.rowIndex="1" />
+            <Button fx:id="defendButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#defendButton" text="Defend" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <ImageView fitHeight="150.0" fitWidth="346.0" layoutX="22.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
