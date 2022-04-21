@@ -27,7 +27,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.transform.Rotate;
@@ -112,7 +114,7 @@ public class BattleController{
 
     @FXML
     private Button multiAttackButton;
-    
+   
     @FXML
     private ImageView sanic, goomba, sword, heal, shield;
     private TranslateTransition translateSword1 = new TranslateTransition();
@@ -457,9 +459,6 @@ public class BattleController{
     	fadeShield.play();
 
     }
-    
-    
-    
     
     @FXML
     void endTurn(ActionEvent event) throws InterruptedException {
