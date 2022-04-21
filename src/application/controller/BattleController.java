@@ -127,6 +127,7 @@ public class BattleController{
     private FadeTransition fadeHeal = new FadeTransition();
     private TranslateTransition translateShield = new TranslateTransition();
     private FadeTransition fadeSword = new FadeTransition();
+    private FadeTransition fadeShield = new FadeTransition();
 
     Random random = new Random();
     
@@ -272,6 +273,14 @@ public class BattleController{
 		fadeSword.setFromValue(1); //original opacity value
 		fadeSword.setToValue(0);	//target opacity value
 
+		//Preparing fade animation for shield
+		fadeShield.setNode(shield);
+		fadeShield.setDuration(Duration.millis(550));
+		fadeShield.setCycleCount(2);
+		fadeShield.setInterpolator(Interpolator.EASE_OUT); //Causes the animation to slow down near the end of the sequence
+		fadeShield.setAutoReverse(true);
+		fadeShield.setFromValue(0); //original opacity value
+		fadeShield.setToValue(1);	//target opacity value
 	}
 
     @FXML
@@ -405,11 +414,6 @@ public class BattleController{
     
     @FXML
     void defendButton(ActionEvent event) {
-    	//Animations
-//    	sword.setVisible(false);
-//    	heal.setVisible(false);
-//    	shield.setVisible(true);
-//    	translateShield.play();
     	basicAttackButton.setDisable(true);
     	multiAttackButton.setDisable(true);
     	healButton.setDisable(true);
@@ -444,6 +448,13 @@ public class BattleController{
         }
         
         System.out.print(dice.getDie1());
+        
+      //Animations
+    	sword.setVisible(false);
+    	heal.setVisible(false);
+    	shield.setVisible(true);
+    	translateShield.play();
+    	fadeShield.play();
 
     }
     
