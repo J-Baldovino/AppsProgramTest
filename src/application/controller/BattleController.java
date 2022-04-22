@@ -295,13 +295,6 @@ public class BattleController{
         DiceHero.subMana(1);
         update();
         BattleText.setText("Name here your hero will be named at the start " + " has used basic strike! \n" + list.get(DiceHero.getBattlesWon()).getName() + " has " +  list.get(DiceHero.getBattlesWon()).getHealth() + ".");
-        
-    	}
-    	else
-    	{
-    		BattleText.setText("You do not have enough mana");
-    	}
-    	
     	//Animation
     	sword.setVisible(true);
     	heal.setVisible(false);
@@ -310,7 +303,11 @@ public class BattleController{
     	rotateSword1.play();
     	translateGoomba.play();
     	translateSanic.play();
-
+    	}
+    	else
+    	{
+    		BattleText.setText("You do not have enough mana");
+    	}
     }
     
     @FXML
@@ -322,6 +319,14 @@ public class BattleController{
     		//4 mana to dice1 * dice1
     		System.out.println( list.get(DiceHero.getBattlesWon()).takeDamage(DiceHero.multistrike((rollingFunction()))));
     		BattleText.setText("Name here your hero will be named at the start " + " has used multi-strike! " + list.get(DiceHero.getBattlesWon()).getName() + " has " +  list.get(DiceHero.getBattlesWon()).getHealth() + ".");
+    		//Animation
+        	sword.setVisible(true);
+        	heal.setVisible(false);
+        	shield.setVisible(false);
+        	translateSword2.play();
+        	rotateSword2.play();
+        	translateGoomba.play();
+        	translateSanic.play();
     	}
     	else
     	{
@@ -330,16 +335,6 @@ public class BattleController{
 //    	System.out.println(DiceHero.getHealth());
 //    	DiceHero.takeDamage(1);
     	update();
-		
-    	//Animation
-    	sword.setVisible(true);
-    	heal.setVisible(false);
-    	shield.setVisible(false);
-    	translateSword2.play();
-    	rotateSword2.play();
-    	translateGoomba.play();
-    	translateSanic.play();
-
     }
     
     @FXML
