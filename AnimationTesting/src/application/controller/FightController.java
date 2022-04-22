@@ -1,6 +1,5 @@
 package application.controller;
 
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -9,7 +8,6 @@ import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -28,6 +26,7 @@ public class FightController implements Initializable{
     private RotateTransition rotateSword1 = new RotateTransition();
     private RotateTransition rotateSword2 = new RotateTransition();
     private TranslateTransition translateGoomba = new TranslateTransition();
+    private TranslateTransition translateGoombaAttack = new TranslateTransition();
     private TranslateTransition translateSanic = new TranslateTransition();
     //private FadeTransition fadeGoomba = new FadeTransition();
     private FadeTransition fadeHeal = new FadeTransition();
@@ -42,6 +41,9 @@ public class FightController implements Initializable{
     	rotateSword1.play();
     	translateGoomba.play();
     	translateSanic.play();
+    	
+    	//the last two animations are for enemy attack and fading
+    	//translateGoombaAttack.play();
     	//fadeGoomba.play();
     }
     
@@ -148,6 +150,14 @@ public class FightController implements Initializable{
 		translateGoomba.setCycleCount(4);
 		translateGoomba.setByX(35); 
 		translateGoomba.setAutoReverse(true);
+		
+		//preparing translation movement for enemy attack
+		translateGoombaAttack.setNode(goomba);
+		translateGoombaAttack.setDuration(Duration.millis(200));
+		translateGoombaAttack.setCycleCount(2);
+		translateGoombaAttack.setByX(-350); //moves the image to the right by 500 pixels
+		translateGoombaAttack.setByY(120); //moves the image up by 200 pixels
+		translateGoombaAttack.setAutoReverse(true);
 		
 		//Preparing translation movement for player
 		translateSanic.setNode(sanic);
