@@ -403,11 +403,10 @@ public class BattleController{
     	TwoDice dice = new TwoDice();
     	if(endTurn.getText().equals("End Turn"))
     	{
-//    	BattleText.setText(list.get(DiceHero.getBattlesWon()).getName() + "'s turn" );
     	Thread.sleep(1000); //small delay 
-    	//System.out.println(list.get(DiceHero.getBattlesWon()).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(DiceHero.getBattlesWon()).getAttackPower());
     	BattleText.setText(list.get(DiceHero.getBattlesWon()).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(DiceHero.getBattlesWon()).getAttackPower());
     	DiceHero.takeDamage(list.get(DiceHero.getBattlesWon()).getAttackPower());
+    	//DiceHero.takeDamage(Monster1.getAttackPower);
     	endTurn.setText("Start turn");
     	}
     	else
