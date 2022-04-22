@@ -83,9 +83,8 @@ public class TitleController {
     	smp.setVolume(0.3);
     	smp.play();
     	try {
-    		MusicManager.stopS();
     		firstStart=false;
-    		URL url = new File("Stage.fxml").toURI().toURL();
+    		URL url = new File("ChooseName.fxml").toURI().toURL();
     		URL styleUrl = new File("src/application/application.css").toURI().toURL();
 			sB = FXMLLoader.load(url);
 			Stage battle= (Stage) ((Node)event.getSource()).getScene().getWindow();

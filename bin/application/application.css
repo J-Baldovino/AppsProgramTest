@@ -16,3 +16,6 @@
 #submitButton:hover{
 	-fx-underline:true; 
 }
+#sButton:hover{
+	-fx-underline:true; 
+}
