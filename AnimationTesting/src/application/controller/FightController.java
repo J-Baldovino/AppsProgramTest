@@ -74,7 +74,7 @@ public class FightController implements Initializable{
     	translateShield.play();
     }
     
-    @FXML
+  /*  @FXML
     void ChangeBorder1(ActionEvent event) {
     	basicAttackButton.setStyle("-fx-background-color: red");
     	}
@@ -96,7 +96,7 @@ public class FightController implements Initializable{
     void changeBorder4(ActionEvent event) {
 
     	
-    }
+    }*/
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	sword.setVisible(false); //start the sword as not visible

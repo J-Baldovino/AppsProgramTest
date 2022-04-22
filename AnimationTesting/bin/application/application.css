@@ -1,4 +1,37 @@
-.basicActionButton:hover{
-	
-	-fx-background-color: "red";
+#basicAttackButton:hover{
+  -fx-background-color: #b11313 !important;
+  -fx-border-color:white;
 }
+
+#basicAttackButton:pressed{
+  -fx-background-color: #fab4b0 !important;
+}
+
+#multiAttackButton:hover{
+  -fx-background-color: #b11313 !important;
+  -fx-border-color:white;
+}
+
+#multiAttackButton:pressed{
+  -fx-background-color: #fab4b0 !important;
+}
+
+#healButton:hover{
+  -fx-background-color: #25a92a !important;
+  -fx-border-color:white;
+}
+
+#healButton:pressed{
+  -fx-background-color: #85ff89 !important;
+}
+
+#defendBtn:hover{
+  -fx-background-color: #155094 !important;
+  -fx-border-color:white;
+}
+
+#defendBtn:pressed{
+  -fx-background-color: #92bded !important;
+}
+
+
