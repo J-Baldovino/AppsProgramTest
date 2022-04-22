@@ -1,5 +1,6 @@
 package application.controller;
 
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,6 +9,7 @@ import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -72,6 +74,29 @@ public class FightController implements Initializable{
     	translateShield.play();
     }
     
+    @FXML
+    void ChangeBorder1(ActionEvent event) {
+    	basicAttackButton.setStyle("-fx-background-color: red");
+    	}
+    
+    
+    @FXML
+    void changeBorder2(ActionEvent event) {
+
+    	
+    }
+    
+    @FXML
+    void changeBorder3(ActionEvent event) {
+
+    	
+    }
+    
+    @FXML
+    void changeBorder4(ActionEvent event) {
+
+    	
+    }
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	sword.setVisible(false); //start the sword as not visible
@@ -147,6 +172,8 @@ public class FightController implements Initializable{
 		fadeHeal.setAutoReverse(true);
 		fadeHeal.setFromValue(0); //original opacity value
 		fadeHeal.setToValue(1);	//target opacity value
+		
+	    
     }
 
 }
