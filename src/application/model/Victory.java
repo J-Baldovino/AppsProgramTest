@@ -8,8 +8,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Properties;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 public class Victory {
 	
@@ -18,28 +16,23 @@ public class Victory {
     private static HashMap<Object, Object> victors=new HashMap<Object,Object>();
     
     public static void addVictor(String name, String score) throws IOException{
-    	if (name==null || name.isEmpty()||score==null || score.isEmpty() ){
-			Alert error= new Alert(AlertType.ERROR);
-			//Alert error= new Alert(AlertType.CONFIRMATION);
-			error.setTitle("Error Message");
-			error.setHeaderText("No player detected");
-			error.setContentText("Please, try again!");
-			error.showAndWait();
+    	if (name==null || name.isEmpty()||score==null || score.isEmpty() )
+    	{
+    		
     	}
     	else
     	{
     		properties.load(new FileInputStream("data/victors.properties"));  
-    		for(Object keys: properties.stringPropertyNames()){
-    			victors.put(keys, properties.get(keys).toString());
-    		}			
-    		
-    		newVictor.put(name,score);
-    		properties.putAll(newVictor);
-    		FileOutputStream file=new FileOutputStream("data/victors.properties", true);
-    		properties.store(file, null);
-    		Alert error= new Alert(AlertType.CONFIRMATION);
-    		error.showAndWait();
+        	for(Object keys: properties.stringPropertyNames()){
+        		victors.put(keys, properties.get(keys).toString());
+        	}			
+        	
+        	newVictor.put(name,score);
+        	properties.putAll(newVictor);
+        	FileOutputStream file=new FileOutputStream("data/victors.properties", true);
+        	properties.store(file, null);
     	}
+    	
     }
     	
     public static ArrayList<Champions> sendVictors() throws IOException{

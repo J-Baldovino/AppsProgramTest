@@ -64,11 +64,11 @@ public class LoseController {
     		URL url = new File("Title.fxml").toURI().toURL();
     		URL styleUrl = new File("src/application/application.css").toURI().toURL();
 			tC = FXMLLoader.load(url);
-			Stage classifieds= (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Stage title= (Stage) ((Node)event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(tC);
 			scene.getStylesheets().add(styleUrl.toString());
-			classifieds.setScene(scene);
-			classifieds.show();
+			title.setScene(scene);
+			title.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -92,4 +92,3 @@ public class LoseController {
     }
 
 }
-

@@ -15,7 +15,7 @@
             <Image url="@images/E6snUkeXIAArAOu.png" />
          </image>
       </ImageView>
-      <Label fx:id="stageNumber" alignment="CENTER" layoutX="43.0" layoutY="14.0" prefHeight="77.0" prefWidth="715.0" text="">
+      <Label fx:id="sT" alignment="CENTER" layoutX="43.0" layoutY="14.0" prefHeight="77.0" prefWidth="715.0" text="">
          <font>
             <Font name="Upheaval TT -BRK-" size="53.0" />
          </font>

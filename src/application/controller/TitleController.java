@@ -4,6 +4,8 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import application.model.MusicManager;
+import application.model.StageCounter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,23 +58,12 @@ public class TitleController {
     	
     	handP.setVisible(false);
     	handC.setVisible(false);
-    	File media = new File("music/title.mp3");
-    	Media song = new Media(media.toURI().toURL().toString());
-    	mp= new MediaPlayer(song);
-    	
-    		
-        mp.setOnEndOfMedia(new Runnable() {
-        	@Override
-        	public void run()
-        	{
-        		mp.seek(mp.getStartTime());
-        	}
-        });
-    	mp.setVolume(0.1);
-        mp.play();
-        	
-    	
-    	
+    	if(!firstStart)
+    	{
+    		MusicManager.loadSong("music/title.mp3");
+        	MusicManager.playS();
+        	StageCounter.setStagec(1);
+    	}
     	
     }
     
@@ -92,16 +83,16 @@ public class TitleController {
     	smp.setVolume(0.3);
     	smp.play();
     	try {
-    		mp.stop();
+    		MusicManager.stopS();
     		firstStart=false;
     		URL url = new File("Stage.fxml").toURI().toURL();
     		URL styleUrl = new File("src/application/application.css").toURI().toURL();
 			sB = FXMLLoader.load(url);
-			Stage classifieds= (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Stage battle= (Stage) ((Node)event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(sB);
 			scene.getStylesheets().add(styleUrl.toString());
-			classifieds.setScene(scene);
-			classifieds.show();
+			battle.setScene(scene);
+			battle.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -109,6 +100,7 @@ public class TitleController {
 
     @FXML
     void showCredits(ActionEvent event) throws MalformedURLException {
+    	StageCounter.setStagec(1);
     	File media = new File("music/select.mp3");
     	Media effect = new Media(media.toURI().toURL().toString());
     	smp= new MediaPlayer(effect);
@@ -116,15 +108,15 @@ public class TitleController {
     	smp.setVolume(0.3);
     	smp.play();
     	try {
-    		mp.stop();
+    		firstStart=true;
     		URL url = new File("Credits.fxml").toURI().toURL();
     		URL styleUrl = new File("src/application/application.css").toURI().toURL();
 			cC = FXMLLoader.load(url);
-			Stage classifieds= (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Stage credits= (Stage) ((Node)event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(cC);
 			scene.getStylesheets().add(styleUrl.toString());
-			classifieds.setScene(scene);
-			classifieds.show();
+			credits.setScene(scene);
+			credits.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -166,4 +158,3 @@ public class TitleController {
     }
 
 }
-
