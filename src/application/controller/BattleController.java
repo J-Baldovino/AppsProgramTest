@@ -420,8 +420,8 @@ public class BattleController{
     	}
     	else
     	{
-    		DiceHero.addMana(rollingFunction());
-    		BattleText.setText("Hero's name turn! Hero's name gains " + dice.getDie1() + " mana!");
+//    		DiceHero.addMana(rollingFunction());
+    		BattleText.setText("Hero's name turn! Hero's name gains " + DiceHero.addMana(rollingFunction()) + " mana!");
     		endTurn.setText("End Turn");
         	basicAttackButton.setDisable(false);
         	multiAttackButton.setDisable(false);
@@ -504,6 +504,7 @@ public class BattleController{
         	defendButton.setDisable(true);
         	endTurn.setDisable(true);
     		battleWonScene.setVisible(true);
+    		BattleText.setText("You won! Click next scene.");
     	}
     }
     

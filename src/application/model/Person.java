@@ -68,7 +68,7 @@ public class Person {
 		{
 			Person.mana = 10; 
 		}
-		return Person.mana;
+		return manaToAdd;
 	}
 	
 	public void subMana(int manaToSub) {
