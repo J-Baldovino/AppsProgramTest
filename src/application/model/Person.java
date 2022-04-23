@@ -7,6 +7,7 @@ public class Person {
 	private static int mana = 0;
 	private static int maxMana = 10;
 	private static int battlesWon = 0;
+	private static int shield = 0;
 	private static int score = 0;
 	private static String name="";
 
@@ -74,7 +75,7 @@ public class Person {
 	
 	public int addMana(int manaToAdd) {
 		Person.mana += manaToAdd;
-		if(Person.mana >= maxMana)
+		if(Person.mana > maxMana)
 		{
 			Person.mana = 10; 
 		}
@@ -102,6 +103,10 @@ public class Person {
 		return Integer.toString(getHealth()) + " / " + Integer.toString(getMaxHealth());
 	}
 
+	public int getShield() {
+		return Person.shield;
+	}
+	
 	public int basicStrike(int diceRoll) {
 //		System.out.println(getName() + " uses basic strike for " + attackpower + "!");
 		return diceRoll;
@@ -155,7 +160,14 @@ public class Person {
 	}
 	
 	public void takeDamage(int attackpower) {
-		Person.health -= attackpower;
+		int damage = attackpower - Person.shield;
+		
+		if(damage <= 0)
+		{
+			damage = 0;
+		}
+		
+		Person.health -= damage;
 //		System.out.println(getName() + " has taken " + attackpower);
 //		return getHealth();
 		
@@ -226,6 +238,13 @@ public class Person {
 	    			return dice1;
 	    }
 	    
+	    public void healing(int dice1) {
+	    	Person.health+=dice1;
+	    	if( Person.health >= Person.maxHealth )
+	    	{
+	    		Person.health=Person.maxHealth;
+	    	}
+	    }
 	    
 	    public int defend(int dice1) {
 	    	if(Person.mana >= 2) {
@@ -237,5 +256,15 @@ public class Person {
 	    	}
 	    	
 	    	return dice1;
+	    }
+	    
+	    public int defending(int dice1) {
+	    	Person.shield+= dice1;
+	    	
+	    	return dice1;
+	    }
+	    
+	    public void resetShield() {
+	    	Person.shield = 0;
 	    }
 }
