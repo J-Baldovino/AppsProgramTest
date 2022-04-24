@@ -28,6 +28,22 @@ public class Person {
 		this.name = name;
 	}
 	*/
+	public void reset() {
+		Person.health = 10;
+		Person.maxHealth = 10;
+		Person.mana = 0;
+		Person.maxMana = 10;
+		Person.battlesWon = 0;
+		Person.shield = 0;
+		Person.score = 0;
+		Person.name = "";
+	}
+	public void setScore() {
+		Person.score += 100;
+	}
+	public int getScore() {
+		return Person.score = score;
+	}
 	public void setHealth(int health) {
 		Person.health = health;
 	}
@@ -46,7 +62,7 @@ public class Person {
 		Person.name=n;
 	}
 	
-	public static String retName()
+	public String retName()
 	{
 		return Person.name;
 	}

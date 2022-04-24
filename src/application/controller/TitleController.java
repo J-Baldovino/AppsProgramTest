@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import application.model.MusicManager;
+import application.model.Person;
 import application.model.StageCounter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -64,7 +65,8 @@ public class TitleController {
         	MusicManager.playS();
         	StageCounter.setStagec(1);
     	}
-    	
+    	Person DiceHero = new Person();
+    	DiceHero.reset();
     }
     
     @FXML

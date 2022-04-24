@@ -170,13 +170,13 @@ public class BattleController{
         
 //		dice.roll();
 		Monster gremlin;
-		gremlin = new Monster("Gremlin " + Integer.toString(DiceHero.getBattlesWon() + 1), 10 + DiceHero.getBattlesWon() * 5, 3 + DiceHero.getBattlesWon());
+		gremlin = new Monster("Monster " + Integer.toString(DiceHero.getBattlesWon() + 1), 10 + DiceHero.getBattlesWon() * 5, 3 + DiceHero.getBattlesWon());
 		list.add(gremlin);
 //		Monster gremlin2;
 //		gremlin2 = new Monster("Goblin", 11, 7);
 //		list.add(gremlin2);
 		
-		playerName.setText("Change");
+		playerName.setText(DiceHero.retName());
 		//playerHealth.setText(DiceHero.getHealthRatio());
 //		EnemyName.setText(list.get(0).getName());
 //		EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
@@ -335,7 +335,7 @@ public class BattleController{
         System.out.println("The monster's hp is now = " + Integer.toString(list.get(0).getHealth()) + "\n");// + " the thread is fucking me here please help God");
         DiceHero.subMana(1);
         update();
-        BattleText.setText("Name here your hero will be named at the start " + " has used basic strike! \n" + list.get(0).getName() + " has " +  list.get(0).getHealth() + ".");
+        BattleText.setText(DiceHero.retName() + " has used basic strike! \n" + list.get(0).getName() + " has " +  list.get(0).getHealth() + ".");
     	//Animation
         sword.setVisible(true);
     	heal.setVisible(false);
@@ -360,7 +360,7 @@ public class BattleController{
     	{
     		//4 mana to dice1 * dice1
     		System.out.println( list.get(0).takeDamage(DiceHero.multistrike((rollingFunction()))));
-    		BattleText.setText("Name here your hero will be named at the start " + " has used multi-strike! " + list.get(0).getName() + " has " +  list.get(0).getHealth() + ".");
+    		BattleText.setText(DiceHero.retName() + " has used multi-strike! " + list.get(0).getName() + " has " +  list.get(0).getHealth() + ".");
     		DiceHero.subMana(4);
     		//Animation
     		sword.setVisible(true);
@@ -393,7 +393,7 @@ public class BattleController{
     	DiceHero.healing(rollingFunction());
         DiceHero.subMana(3);
         update();
-        BattleText.setText("Name here your hero will be named at the start " + " has used heal! \n" + ".");
+        BattleText.setText(DiceHero.retName() + " has used heal! \n" + ".");
 
     	//Animations 
     	sword.setVisible(false);
@@ -420,7 +420,7 @@ public class BattleController{
     		//System.out.println("`Hero's name` defends for " + DiceHero.defending(rollingFunction()));
         DiceHero.subMana(2);
         update();
-        BattleText.setText("`Hero's name` defends for " + DiceHero.defending(rollingFunction()) + ".");
+        BattleText.setText(DiceHero.retName() + " defends for " + DiceHero.defending(rollingFunction()) + ".");
 
         //Animations
     	sword.setVisible(false);
@@ -462,7 +462,7 @@ public class BattleController{
     	else
     	{
 //    		DiceHero.addMana(rollingFunction());
-    		BattleText.setText("Hero's name turn! Hero's name gains " + DiceHero.addMana(rollingFunction()) + " mana!");
+    		BattleText.setText(DiceHero.retName() + " turn! Hero's name gains " + DiceHero.addMana(rollingFunction()) + " mana!");
     		endTurn.setText("End Turn");
         	basicAttackButton.setDisable(false);
         	multiAttackButton.setDisable(false);
@@ -473,6 +473,7 @@ public class BattleController{
 		if(DiceHero.getHealth() <= 0)
 		{
 	    	mp.stop();
+	    	DiceHero.reset();
 	    	try {
 	    		URL url = new File("Game_Over.fxml").toURI().toURL();
 	    		URL styleUrl = new File("src/application/application.css").toURI().toURL();
@@ -487,7 +488,6 @@ public class BattleController{
 			}
 		}
     	update();
-    	
     }
     
     @FXML
@@ -495,7 +495,8 @@ public class BattleController{
     	mp.stop();
     	Person DiceHero = new Person();
     	DiceHero.setBattlesWon();
-    	if(DiceHero.getBattlesWon() < 2)
+    	DiceHero.setScore();
+    	if(DiceHero.getBattlesWon() < 5)
     	{
     	try {
     		URL url = new File("Stage.fxml").toURI().toURL();

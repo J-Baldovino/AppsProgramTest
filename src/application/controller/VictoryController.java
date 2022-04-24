@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 
 import application.model.Champions;
+import application.model.Person;
 import application.model.Victory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -79,9 +80,14 @@ public class VictoryController {
       
         cName.setCellValueFactory(new PropertyValueFactory<Champions,String>("Name"));
         cScore.setCellValueFactory(new PropertyValueFactory<Champions,String>("Score"));
-        victoryTable.setItems(getChampions());
         
-    	
+        Person DiceHero = new Person();
+        winName.setText(DiceHero.retName());
+        winScore.setText(Integer.toString(DiceHero.getScore()));
+        Victory.addVictor(winName.getText(), winScore.getText());
+        
+        victoryTable.setItems(getChampions());
+//        System.out.print(DiceHero.getScore());
     }
 
     @FXML
@@ -92,7 +98,7 @@ public class VictoryController {
     	smp.setStartTime(new Duration(600));
     	smp.setVolume(0.3);
     	smp.play();
-    	Victory.addVictor(winName.getText(), winScore.getText());
+//    	Victory.addVictor(winName.getText(), winScore.getText());
     	try {
     		mp.stop();
     		URL url = new File("Title.fxml").toURI().toURL();
