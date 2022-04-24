@@ -336,7 +336,7 @@ public class BattleController{
     	translateEnemy1.play();
     	translatePlayer1.play();
     	fadeSword.play();
-
+    	}
     }
     
     @FXML
@@ -355,8 +355,8 @@ public class BattleController{
         	shield.setVisible(false);
         	translateSword2.play();
         	rotateSword2.play();
-        	translateGoomba.play();
-        	translateSanic.play();
+        	translateEnemy2.play();
+        	translatePlayer2.play();
     	}
     	else
     	{
