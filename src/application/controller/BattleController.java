@@ -125,11 +125,15 @@ public class BattleController{
     private TranslateTransition translateSword2 = new TranslateTransition();
     private RotateTransition rotateSword1 = new RotateTransition();
     private RotateTransition rotateSword2 = new RotateTransition();
-    private TranslateTransition translateGoomba = new TranslateTransition();
-    private TranslateTransition translateSanic = new TranslateTransition();
+    private TranslateTransition translateEnemy1 = new TranslateTransition();
+    private TranslateTransition translateEnemy2 = new TranslateTransition();
+    private TranslateTransition translatePlayer1 = new TranslateTransition();
+    private TranslateTransition translatePlayer2 = new TranslateTransition();
     //private FadeTransition fadeGoomba = new FadeTransition();
     private FadeTransition fadeHeal = new FadeTransition();
     private TranslateTransition translateShield = new TranslateTransition();
+    private FadeTransition fadeSword = new FadeTransition();
+    private FadeTransition fadeShield = new FadeTransition();
 
     Random random = new Random();
     
@@ -220,19 +224,34 @@ public class BattleController{
 		translateShield.setByY(-40);
 		translateShield.setAutoReverse(true);
     	
-		//Preparing translation movement for enemy
-		translateGoomba.setNode(goomba);
-		translateGoomba.setDuration(Duration.millis(200));
-		translateGoomba.setCycleCount(4);
-		translateGoomba.setByX(35); 
-		translateGoomba.setAutoReverse(true);
+		//Preparing translation movement for enemy1
+		translateEnemy1.setNode(goomba);
+		translateEnemy1.setDuration(Duration.millis(200));
+		translateEnemy1.setCycleCount(4);
+		translateEnemy1.setByX(35); 
+		translateEnemy1.setAutoReverse(true);
 		
-		//Preparing translation movement for player
-		translateSanic.setNode(sanic);
-		translateSanic.setDuration(Duration.millis(200));
-		translateSanic.setCycleCount(2);
-		translateSanic.setByY(-35); 
-		translateSanic.setAutoReverse(true);
+		//Preparing translation movement for player1
+		translatePlayer1.setNode(sanic);
+		translatePlayer1.setDuration(Duration.millis(200));
+		translatePlayer1.setCycleCount(2);
+		translatePlayer1.setByY(-35); 
+		translatePlayer1.setAutoReverse(true);
+		
+		//Preparing translation movement for enemy2
+		translateEnemy2.setNode(goomba);
+		translateEnemy2.setDuration(Duration.millis(200));
+		translateEnemy2.setCycleCount(2);
+		translateEnemy2.setByX(-350);
+		translateEnemy2.setByY(120);
+		translateEnemy2.setAutoReverse(true);
+				
+		//Preparing translation movement for player2
+		translatePlayer2.setNode(sanic);
+		translatePlayer2.setDuration(Duration.millis(200));
+		translatePlayer2.setCycleCount(2);
+		translatePlayer2.setByY(-35); 
+		translatePlayer2.setAutoReverse(true);
 		
 		//Preparing fade animation for the enemy
 //		fadeGoomba.setNode(goomba);
@@ -250,6 +269,23 @@ public class BattleController{
 		fadeHeal.setAutoReverse(true);
 		fadeHeal.setFromValue(0); //original opacity value
 		fadeHeal.setToValue(1);	//target opacity value
+		
+		//Preparing fade animation for sword
+		fadeSword.setNode(sword);
+		fadeSword.setDuration(Duration.millis(2000));
+		fadeSword.setCycleCount(1);
+		fadeSword.setInterpolator(Interpolator.EASE_OUT); //Causes the animation to slow down near the end of the sequence
+		fadeSword.setFromValue(1); //original opacity value
+		fadeSword.setToValue(0);	//target opacity value
+
+		//Preparing fade animation for shield
+		fadeShield.setNode(shield);
+		fadeShield.setDuration(Duration.millis(550));
+		fadeShield.setCycleCount(2);
+		fadeShield.setInterpolator(Interpolator.EASE_OUT); //Causes the animation to slow down near the end of the sequence
+		fadeShield.setAutoReverse(true);
+		fadeShield.setFromValue(0); //original opacity value
+		fadeShield.setToValue(1);	//target opacity value
 
 	}
 
@@ -301,13 +337,14 @@ public class BattleController{
         update();
         BattleText.setText("Name here your hero will be named at the start " + " has used basic strike! \n" + list.get(0).getName() + " has " +  list.get(0).getHealth() + ".");
     	//Animation
-    	sword.setVisible(true);
+        sword.setVisible(true);
     	heal.setVisible(false);
     	shield.setVisible(false);
     	translateSword1.play();
     	rotateSword1.play();
-    	translateGoomba.play();
-    	translateSanic.play();
+    	translateEnemy1.play();
+    	translatePlayer1.play();
+    	fadeSword.play();
     	}
     	else
     	{
@@ -326,13 +363,14 @@ public class BattleController{
     		BattleText.setText("Name here your hero will be named at the start " + " has used multi-strike! " + list.get(0).getName() + " has " +  list.get(0).getHealth() + ".");
     		DiceHero.subMana(4);
     		//Animation
-        	sword.setVisible(true);
+    		sword.setVisible(true);
         	heal.setVisible(false);
         	shield.setVisible(false);
         	translateSword2.play();
         	rotateSword2.play();
-        	translateGoomba.play();
-        	translateSanic.play();
+        	translateEnemy1.play();
+        	translatePlayer1.play();
+        	fadeSword.play();
     	}
     	else
     	{
@@ -384,11 +422,12 @@ public class BattleController{
         update();
         BattleText.setText("`Hero's name` defends for " + DiceHero.defending(rollingFunction()) + ".");
 
-    	//Animations
+        //Animations
     	sword.setVisible(false);
     	heal.setVisible(false);
     	shield.setVisible(true);
     	translateShield.play();
+    	fadeShield.play();
     	}
     	else
     	{
@@ -416,6 +455,8 @@ public class BattleController{
     	multiAttackButton.setDisable(true);
     	healButton.setDisable(true);
     	defendButton.setDisable(true);
+    	translateEnemy2.play();
+    	translatePlayer2.play();
     	//endTurn.setDisable(true);
     	}
     	else
