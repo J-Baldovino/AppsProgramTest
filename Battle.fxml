@@ -18,113 +18,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<!--
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.BattleController">
-      <children>
-      <ImageView fitHeight="459.0" fitWidth="866.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/3hqfdsb9uvg11.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="player" fitHeight="88.0" fitWidth="135.0" layoutX="125.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Players/PikPng.com_pokemon-ruby-logo-png_3422976.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="114.0" fitWidth="803.0" layoutX="-2.0" layoutY="345.0" pickOnBounds="true">
-         <image>
-            <Image url="@images/Battle%20UI%20%5BNot%20Mine%5D%20Loyalty/Loyalty%20Battle%20UI/battleCommand.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="135.0" fitWidth="345.0" layoutX="455.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Battle%20UI%20%5BNot%20Mine%5D%20Loyalty/Loyalty%20Battle%20UI/battlePlayerBoxD.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="124.0" fitWidth="353.0" layoutX="-62.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Battle%20UI%20%5BNot%20Mine%5D%20Loyalty/Loyalty%20Battle%20UI/battleFoeBoxD.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="39.0" fitWidth="97.0" layoutX="413.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Buttons/Attack.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="32.0" fitWidth="108.0" layoutX="546.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Buttons/Defend.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="79.0" layoutX="684.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Buttons/Burst.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="attackButton" layoutX="413.0" layoutY="383.0" mnemonicParsing="false" onAction="#sceneAction1" opacity="0.0" prefHeight="32.0" prefWidth="97.0" text="Attack" />
-      <Button fx:id="defendButton" layoutX="546.0" layoutY="383.0" mnemonicParsing="false" onAction="#sceneAction2" opacity="0.0" prefHeight="30.0" prefWidth="108.0" text="Defend" />
-      <Button fx:id="burstButton" layoutX="684.0" layoutY="383.0" mnemonicParsing="false" onAction="#sceneAction3" opacity="0.0" prefHeight="30.0" prefWidth="78.0" text="Burst" />
-      <ImageView fx:id="enemy" fitHeight="99.0" fitWidth="144.0" layoutX="530.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Players/pngaaa.com-4283927.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="14.0" layoutY="67.0" prefHeight="45.0" prefWidth="97.0" text="old enemy">
-         <font>
-            <Font name="Upheaval TT -BRK-" size="30.0" />
-         </font>
-      </Label>
-
-
-<Label fx:id="playerName" layoutX="549.0" layoutY="269.0" text="Player" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <font>
-      <Font name="Upheaval TT -BRK-" size="30.0" />
-   </font>
-</Label>
-
-      <Label layoutX="18.0" layoutY="360.0" text="What will you do?">
-         <font>
-            <Font name="Upheaval TT -BRK-" size="30.0" />
-         </font>
-      </Label>
-      <TextField fx:id="dice1" alignment="CENTER" editable="false" layoutX="320.0" layoutY="483.0" prefHeight="45.0" prefWidth="45.0" />
-      <TextField id="dice2" layoutX="400.0" layoutY="483.0" prefHeight="45.0" prefWidth="45.0" />
-      <TextField fx:id="BattleText" alignment="CENTER" editable="false" layoutX="30.0" layoutY="690.0" prefHeight="88.0" prefWidth="746.0" text="Battle Text" />
-<ImageView fx:id="diceImage" fitHeight="45.0" fitWidth="45.0" layoutX="30.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
-
-<Label fx:id="playerHealth" layoutX="689.0" layoutY="269.0" text="Health" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <font>
-      <Font name="Upheaval TT -BRK-" size="30.0" />
-   </font>
-</Label>
-      <Button fx:id="endTurn" layoutX="707.0" layoutY="654.0" mnemonicParsing="false" onAction="#endTurn" text="End Turn" />
-      <Label fx:id="EnemyName" layoutX="18.0" layoutY="14.0" text="Enemy">
-         <font>
-            <Font name="Upheaval TT -BRK-" size="30.0" />
-         </font>
-      </Label>
-      <Label fx:id="EnemyHealth" layoutX="158.0" layoutY="14.0" prefHeight="45.0" prefWidth="97.0" text="Enemy">
-         <font>
-            <Font name="Upheaval TT -BRK-" size="30.0" />
-         </font>
-      </Label>
-
-
-
-   </children>
-</AnchorPane>
- -->
-
 <AnchorPane prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.BattleController">
    <children>
       <ImageView fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
@@ -178,10 +71,22 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="basicAttackButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#basicAttackButton" text="Strike" />
-            <Button fx:id="multiAttackButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#multiStrikeButton" text="Multi strike" GridPane.columnIndex="1" />
-            <Button fx:id="healButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#healButton" text="Heal" GridPane.rowIndex="1" />
-            <Button fx:id="defendButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#defendButton" text="Defend" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+             <Button fx:id="basicAttackButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#basicAttackButton" style="-fx-background-color: transparent;" text="Strike" textFill="WHITE">
+               <font>
+                  <Font name="Upheaval TT -BRK-" size="30.0" />
+               </font></Button>
+            <Button fx:id="multiAttackButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#multiStrikeButton" style="-fx-background-color: transparent;" text="Multi " textFill="WHITE" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Upheaval TT -BRK-" size="30.0" />
+               </font></Button>
+            <Button fx:id="healButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#healButton" style="-fx-background-color: transparent;" text="Heal" textFill="WHITE" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Upheaval TT -BRK-" size="30.0" />
+               </font></Button>
+            <Button fx:id="defendButton" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#defendButton" style="-fx-background-color: transparent;" text="Defend" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Upheaval TT -BRK-" size="30.0" />
+               </font></Button>
          </children>
       </GridPane>
       <ImageView fitHeight="150.0" fitWidth="346.0" layoutX="22.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
@@ -199,44 +104,42 @@
             <Image url="@images/Manabox.png" />
          </image>
       </ImageView>
-      <Label layoutX="40.0" layoutY="400.0" prefHeight="45.0" prefWidth="242.0" text="What will you do?">
-         <font>
-            <Font name="Upheaval TT -BRK-" size="30.0" />
-         </font>
-      </Label>
       <TextField fx:id="dice1" alignment="CENTER" editable="false" layoutX="642.0" layoutY="506.0" prefHeight="45.0" prefWidth="45.0" />
       <TextField id="dice2" layoutX="717.0" layoutY="506.0" prefHeight="45.0" prefWidth="45.0" />
       <TextField fx:id="BattleText" alignment="CENTER" editable="false" layoutX="33.0" layoutY="432.0" prefHeight="108.0" prefWidth="551.0" text="Battle Text" />
-      <ImageView fx:id="diceImage" fitHeight="45.0" fitWidth="45.0" layoutX="642.0" layoutY="454.0" preserveRatio="true" />
-      
-      <Label fx:id="playerHealth" layoutX="664.0" layoutY="308.0" text="Health">
+      <ImageView fx:id="diceImage" fitHeight="45.0" fitWidth="45.0" layoutX="642.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="playerHealth" layoutX="655.0" layoutY="315.0" text="Health" textFill="WHITE">
          <font>
             <Font name="Upheaval TT -BRK-" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="endTurn" layoutX="654.0" layoutY="750.0" mnemonicParsing="false" onAction="#endTurn" text="End Turn" />
-      <Label fx:id="EnemyName" layoutX="40.0" layoutY="39.0" text="Enemy">
+      <Button fx:id="endTurn" layoutX="629.0" layoutY="750.0" mnemonicParsing="false" onAction="#endTurn" text="End Turn" />
+      <Label fx:id="EnemyName" layoutX="33.0" layoutY="46.0" text="Enemy" textFill="WHITE">
          <font>
             <Font name="Upheaval TT -BRK-" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="EnemyHealth" layoutX="260.0" layoutY="39.0" prefHeight="45.0" prefWidth="97.0" text="Enemy">
+      <Label fx:id="EnemyHealth" layoutX="260.0" layoutY="39.0" prefHeight="45.0" prefWidth="97.0" text="Enemy" textFill="WHITE">
          <font>
             <Font name="Upheaval TT -BRK-" size="30.0" />
          </font>
       </Label>
       <ImageView fx:id="diceImage2" fitHeight="45.0" fitWidth="45.0" layoutX="717.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="playerName" layoutX="443.0" layoutY="308.0" prefHeight="45.0" prefWidth="97.0" text="Player">
+      <Label fx:id="playerName" layoutX="443.0" layoutY="308.0" prefHeight="45.0" prefWidth="97.0" text="Player" textFill="WHITE">
          <font>
             <Font name="Upheaval TT -BRK-" size="30.0" />
          </font>
       </Label>
-      
-      <Label fx:id="playerMana" layoutX="538.0" layoutY="308.0" prefHeight="45.0" prefWidth="97.0" text="Mana">
+      <Label fx:id="playerMana" layoutX="638.0" layoutY="643.0" prefHeight="45.0" prefWidth="97.0" text="Mana" textFill="WHITE">
          <font>
             <Font name="Upheaval TT -BRK-" size="30.0" />
          </font>
       </Label>
-      
+      <Label fx:id="shieldValue" layoutX="545.0" layoutY="308.0" prefHeight="45.0" prefWidth="97.0" text="Shield" textFill="WHITE">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="battleWonScene" layoutX="708.0" layoutY="750.0" mnemonicParsing="false" onAction="#battleWonScene" text="Next Scene" visible="false" />
    </children>
 </AnchorPane>

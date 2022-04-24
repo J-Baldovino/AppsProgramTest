@@ -72,6 +72,9 @@ public class BattleController{
     private Button endTurn;
     
     @FXML
+    private Button battleWonScene;
+    
+    @FXML
     private TextField dice1;
     
     @FXML
@@ -100,6 +103,9 @@ public class BattleController{
     
     @FXML
     private Label EnemyHealth;
+    
+    @FXML
+    private Label shieldValue;
     
     @FXML
     private Button basicAttackButton;
@@ -161,20 +167,19 @@ public class BattleController{
         dice.rollOneDice(); //dont use rolling function here
         System.out.println(dice.getDie1());
         DiceHero.addMana(dice.getDie1());
-        diceImage.setVisible(true);
         
 //		dice.roll();
 		Monster gremlin;
-		gremlin = new Monster("Gremlin", 10, 3);
+		gremlin = new Monster("Gremlin " + Integer.toString(DiceHero.getBattlesWon() + 1), 10 + DiceHero.getBattlesWon() * 5, 3 + DiceHero.getBattlesWon());
 		list.add(gremlin);
-		Monster gremlin2;
-		gremlin2 = new Monster("Goblin", 11, 7);
-		list.add(gremlin2);
+//		Monster gremlin2;
+//		gremlin2 = new Monster("Goblin", 11, 7);
+//		list.add(gremlin2);
 		
 		playerName.setText("Change");
 		//playerHealth.setText(DiceHero.getHealthRatio());
-//		EnemyName.setText(list.get(DiceHero.getBattlesWon()).getName());
-//		EnemyHealth.setText(Integer.toString(list.get(DiceHero.getBattlesWon()).getHealth()));
+//		EnemyName.setText(list.get(0).getName());
+//		EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
 		update();
 		sword.setVisible(false); //start the sword as not visible
     	heal.setVisible(false);
@@ -281,6 +286,7 @@ public class BattleController{
 		fadeShield.setAutoReverse(true);
 		fadeShield.setFromValue(0); //original opacity value
 		fadeShield.setToValue(1);	//target opacity value
+
 	}
 
     @FXML
@@ -324,22 +330,14 @@ public class BattleController{
     	
     	if(DiceHero.getMana() >= 1)
     	{
-    		int d=rollingFunction();
     	
-        System.out.println( list.get(DiceHero.getBattlesWon()).takeDamage(DiceHero.basicStrike(d)));
-        System.out.println("The monster's hp is now = " + Integer.toString(list.get(DiceHero.getBattlesWon()).getHealth()) + "\n");// + " the thread is fucking me here please help God");
+        System.out.println( list.get(0).takeDamage(DiceHero.basicStrike(rollingFunction())));
+        System.out.println("The monster's hp is now = " + Integer.toString(list.get(0).getHealth()) + "\n");// + " the thread is fucking me here please help God");
         DiceHero.subMana(1);
         update();
-        BattleText.setText("Name here your hero will be named at the start " + " has used basic strike! \n" + list.get(DiceHero.getBattlesWon()).getName() + " has " +  list.get(DiceHero.getBattlesWon()).getHealth() + ".");
-        
-    	}
-    	else
-    	{
-    		BattleText.setText("You do not have enough mana");
-    	}
-    	
+        BattleText.setText("Name here your hero will be named at the start " + " has used basic strike! \n" + list.get(0).getName() + " has " +  list.get(0).getHealth() + ".");
     	//Animation
-    	sword.setVisible(true);
+        sword.setVisible(true);
     	heal.setVisible(false);
     	shield.setVisible(false);
     	translateSword1.play();
@@ -347,7 +345,11 @@ public class BattleController{
     	translateEnemy1.play();
     	translatePlayer1.play();
     	fadeSword.play();
-
+    	}
+    	else
+    	{
+    		BattleText.setText("You do not have enough mana");
+    	}
     }
     
     @FXML
@@ -357,8 +359,18 @@ public class BattleController{
     	if(DiceHero.getMana() >= 4)
     	{
     		//4 mana to dice1 * dice1
-    		System.out.println( list.get(DiceHero.getBattlesWon()).takeDamage(DiceHero.multistrike((rollingFunction()))));
-    		BattleText.setText("Name here your hero will be named at the start " + " has used multi-strike! " + list.get(DiceHero.getBattlesWon()).getName() + " has " +  list.get(DiceHero.getBattlesWon()).getHealth() + ".");
+    		System.out.println( list.get(0).takeDamage(DiceHero.multistrike((rollingFunction()))));
+    		BattleText.setText("Name here your hero will be named at the start " + " has used multi-strike! " + list.get(0).getName() + " has " +  list.get(0).getHealth() + ".");
+    		DiceHero.subMana(4);
+    		//Animation
+    		sword.setVisible(true);
+        	heal.setVisible(false);
+        	shield.setVisible(false);
+        	translateSword2.play();
+        	rotateSword2.play();
+        	translateEnemy1.play();
+        	translatePlayer1.play();
+        	fadeSword.play();
     	}
     	else
     	{
@@ -367,98 +379,63 @@ public class BattleController{
 //    	System.out.println(DiceHero.getHealth());
 //    	DiceHero.takeDamage(1);
     	update();
-		
-    	//Animation
-    	sword.setVisible(true);
-    	heal.setVisible(false);
-    	shield.setVisible(false);
-    	translateSword2.play();
-    	rotateSword2.play();
-    	translateEnemy1.play();
-    	translatePlayer1.play();
-    	fadeSword.play();
     }
     
     @FXML
     void healButton(ActionEvent event) {
-    	rollingFunction();
-//    	dice.roll();
-//		System.out.println("Dice one: " + dice.getDie1() + " Dice two: " + dice.getDie2());
-//		System.out.println(list.get(DiceHero.getBattlesWon()).takeDamage( DiceHero.basicStrike(dice.getDie1())) );
-//		
-//		//System.out.println(DiceHero.takeDamage(list.get(DiceHero.getBattlesWon()).getAttackPower()));
-//		System.out.println();
-//		
-//		if(DiceHero.getHealth() <= 0)
-//		{
-//			System.out.println( "NAME has died has died"); //DiceHero.getName() was removed
-//		}
-//		if(list.get(DiceHero.getBattlesWon()).getHealth() <= 0)
-//		{
-//			System.out.println(list.get(DiceHero.getBattlesWon()).getName() + " has died" );
-//		}
-//		
-//		//System.out.println(DiceHero.getName() + " has " + DiceHero.getHealth() + " hp");
-//		System.out.println(list.get(DiceHero.getBattlesWon()).getName() + " has " + list.get(DiceHero.getBattlesWon()).getHealth() + " hp");
-//    	
-//		
-//		playerHealth.setText(DiceHero.getHealthRatio());
+    	Person DiceHero = new Person();
     	
+    	if(DiceHero.getMana() >= 3)
+    	{
+    	
+        //System.out.println( list.get(0).takeDamage(DiceHero.basicStrike(rollingFunction())));
+        //System.out.println("The monster's hp is now = " + Integer.toString(list.get(0).getHealth()) + "\n");// + " the thread is fucking me here please help God");
+    	DiceHero.healing(rollingFunction());
+        DiceHero.subMana(3);
+        update();
+        BattleText.setText("Name here your hero will be named at the start " + " has used heal! \n" + ".");
+
     	//Animations 
     	sword.setVisible(false);
     	heal.setVisible(true);
     	shield.setVisible(false);
     	fadeHeal.play();
-
+    	}
+    	else
+    	{
+    		BattleText.setText("You do not have enough mana");
+    	}
+    	update();
     }
     
     @FXML
     void defendButton(ActionEvent event) {
-    	basicAttackButton.setDisable(true);
-    	multiAttackButton.setDisable(true);
-    	healButton.setDisable(true);
-    	defendButton.setDisable(true);
+    	Person DiceHero = new Person();
     	
-    	TwoDice dice = new TwoDice();
-        Thread thread = new Thread(){
-            public void run(){
-                //System.out.println("Thread Running");
-                try {
-                    for (int i = 0; i <= 15; i++) {
-                    	dice.rollOneDice();
-                    	dice1.setText( Integer.toString(dice.getDie1()) );
-                        File file = new File("/../../images/dice" + dice.getDie1() +".png");
-                        System.out.print(dice.getDie1() + " ");
-                        diceImage.setImage(new Image(file.toURI().toString()));
-                        Thread.sleep(100);
-                    }
-                    basicAttackButton.setDisable(false);
-                	multiAttackButton.setDisable(false);
-                	healButton.setDisable(false);
-                	defendButton.setDisable(false);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        thread.start();
+    	if(DiceHero.getMana() >= 2)
+    	{
+    	
+        //System.out.println( list.get(0).takeDamage(DiceHero.basicStrike(rollingFunction())));
+        //System.out.println("The monster's hp is now = " + Integer.toString(list.get(0).getHealth()) + "\n");// + " the thread is fucking me here please help God");
+    		//System.out.println("`Hero's name` defends for " + DiceHero.defending(rollingFunction()));
+        DiceHero.subMana(2);
+        update();
+        BattleText.setText("`Hero's name` defends for " + DiceHero.defending(rollingFunction()) + ".");
 
-        while(thread.isAlive())
-        {	
-        }
-        
-        System.out.print(dice.getDie1());
-        
-      //Animations
+        //Animations
     	sword.setVisible(false);
     	heal.setVisible(false);
     	shield.setVisible(true);
     	translateShield.play();
     	fadeShield.play();
+    	}
+    	else
+    	{
+    		BattleText.setText("You do not have enough mana");
+    	}
+    	update();
 
     }
-    
-    
     
     
     @FXML
@@ -467,92 +444,109 @@ public class BattleController{
     	TwoDice dice = new TwoDice();
     	if(endTurn.getText().equals("End Turn"))
     	{
-//    	BattleText.setText(list.get(DiceHero.getBattlesWon()).getName() + "'s turn" );
+//    	BattleText.setText(list.get(0).getName() + "'s turn" );
     	Thread.sleep(1000); //small delay 
-    	//System.out.println(list.get(DiceHero.getBattlesWon()).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(DiceHero.getBattlesWon()).getAttackPower());
-    	BattleText.setText(list.get(DiceHero.getBattlesWon()).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(DiceHero.getBattlesWon()).getAttackPower());
-    	DiceHero.takeDamage(list.get(DiceHero.getBattlesWon()).getAttackPower());
+    	//System.out.println(list.get(0).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(0).getAttackPower());
+    	BattleText.setText(list.get(0).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(0).getAttackPower());
+    	DiceHero.takeDamage(list.get(0).getAttackPower());
     	endTurn.setText("Start turn");
-    	}
-    	else
-    	{
-    		DiceHero.addMana(rollingFunction());
-    		BattleText.setText("Hero's name turn! Hero's name gains " + dice.getDie1() + " mana!");
-    		endTurn.setText("End Turn");
-    		
-    	}
-    	update();
-    	
-    	//TwoDice dice = new TwoDice();
-    	if(endTurn.getText().equals("End Turn"))
-    	{
-//    	BattleText.setText(list.get(DiceHero.getBattlesWon()).getName() + "'s turn" );
-    	Thread.sleep(1000); //small delay 
-    	//System.out.println(list.get(DiceHero.getBattlesWon()).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(DiceHero.getBattlesWon()).getAttackPower());
-    	BattleText.setText(list.get(DiceHero.getBattlesWon()).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(DiceHero.getBattlesWon()).getAttackPower());
-    	DiceHero.takeDamage(list.get(DiceHero.getBattlesWon()).getAttackPower());
-    	endTurn.setText("Start turn");
-    	}
-    	else
-    	{
-    		//DiceHero.addMana(rollingFunction());
-    		BattleText.setText("Hero's name turn! Hero's name gains " + DiceHero.addMana(rollingFunction()) + " mana!");
-    		endTurn.setText("End Turn");
-    		
-    	}
+    	DiceHero.resetShield(); //shield goes to zero after enemy attacks
+    	basicAttackButton.setDisable(true);
+    	multiAttackButton.setDisable(true);
+    	healButton.setDisable(true);
+    	defendButton.setDisable(true);
     	translateEnemy2.play();
     	translatePlayer2.play();
-    	update();	
+    	//endTurn.setDisable(true);
+    	}
+    	else
+    	{
+//    		DiceHero.addMana(rollingFunction());
+    		BattleText.setText("Hero's name turn! Hero's name gains " + DiceHero.addMana(rollingFunction()) + " mana!");
+    		endTurn.setText("End Turn");
+        	basicAttackButton.setDisable(false);
+        	multiAttackButton.setDisable(false);
+        	healButton.setDisable(false);
+        	defendButton.setDisable(false);
+        	//endTurn.setDisable(true);
+    	}
+		if(DiceHero.getHealth() <= 0)
+		{
+	    	mp.stop();
+	    	try {
+	    		URL url = new File("Game_Over.fxml").toURI().toURL();
+	    		URL styleUrl = new File("src/application/application.css").toURI().toURL();
+				lC = FXMLLoader.load(url);
+				Stage classifieds= (Stage) ((Node)event.getSource()).getScene().getWindow();
+				Scene scene = new Scene(lC);
+				scene.getStylesheets().add(styleUrl.toString());
+				classifieds.setScene(scene);
+				classifieds.show();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+    	update();
+    	
     }
     
     @FXML
-    void battleWonScene(ActionEvent event) throws InterruptedException {
+    void battleWonScene(ActionEvent event) {
+    	mp.stop();
     	Person DiceHero = new Person();
-    	//TwoDice dice = new TwoDice();
-    	if(endTurn.getText().equals("End Turn"))
+    	DiceHero.setBattlesWon();
+    	if(DiceHero.getBattlesWon() < 2)
     	{
-//    	BattleText.setText(list.get(DiceHero.getBattlesWon()).getName() + "'s turn" );
-    	Thread.sleep(1000); //small delay 
-    	//System.out.println(list.get(DiceHero.getBattlesWon()).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(DiceHero.getBattlesWon()).getAttackPower());
-    	BattleText.setText(list.get(DiceHero.getBattlesWon()).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(DiceHero.getBattlesWon()).getAttackPower());
-    	DiceHero.takeDamage(list.get(DiceHero.getBattlesWon()).getAttackPower());
-    	endTurn.setText("Start turn");
+    	try {
+    		URL url = new File("Stage.fxml").toURI().toURL();
+    		URL styleUrl = new File("src/application/application.css").toURI().toURL();
+			wC = FXMLLoader.load(url);
+			Stage classifieds= (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene scene = new Scene(wC);
+			scene.getStylesheets().add(styleUrl.toString());
+			classifieds.setScene(scene);
+			classifieds.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     	}
     	else
     	{
-    		//DiceHero.addMana(rollingFunction());
-    		BattleText.setText("Hero's name turn! Hero's name gains " + DiceHero.addMana(rollingFunction()) + " mana!");
-    		endTurn.setText("End Turn");
-    		
+        	mp.stop();
+        	try {
+        		URL url = new File("Victory.fxml").toURI().toURL();
+        		URL styleUrl = new File("src/application/application.css").toURI().toURL();
+    			wC = FXMLLoader.load(url);
+    			Stage classifieds= (Stage) ((Node)event.getSource()).getScene().getWindow();
+    			Scene scene = new Scene(wC);
+    			scene.getStylesheets().add(styleUrl.toString());
+    			classifieds.setScene(scene);
+    			classifieds.show();
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
     	}
-    	update();	
     }
-    @FXML
-    void wonBattleNextScene(ActionEvent event) {
-	Person DiceHero = new Person();
-	DiceHero.setBattlesWon();
-	
-	try {
-		URL url = new File("Stage.fxml").toURI().toURL();
-		URL styleUrl = new File("src/application/application.css").toURI().toURL();
-		wC = FXMLLoader.load(url);
-		Stage classifieds= (Stage) ((Node)event.getSource()).getScene().getWindow();
-		Scene scene = new Scene(wC);
-		scene.getStylesheets().add(styleUrl.toString());
-		classifieds.setScene(scene);
-		classifieds.show();
-	} catch(Exception e) {
-		e.printStackTrace();
-	}
-    }
-	
+    
     public void update(){
     	Person DiceHero = new Person(); //have to do this to access stats
     	//playerName.setText("name here");
     	playerHealth.setText(DiceHero.getHealthRatio());
     	playerMana.setText(Integer.toString(DiceHero.getMana()));
-    	EnemyName.setText(list.get(DiceHero.getBattlesWon()).getName());
-    	EnemyHealth.setText(Integer.toString(list.get(DiceHero.getBattlesWon()).getHealth()));
+    	EnemyName.setText(list.get(0).getName());
+    	EnemyHealth.setText(Integer.toString(list.get(0).getHealth()));
+    	shieldValue.setText(Integer.toString(DiceHero.getShield()));
+    	
+    	if(list.get(0).getHealth() <= 0)
+    	{
+        	basicAttackButton.setDisable(true);
+        	multiAttackButton.setDisable(true);
+        	healButton.setDisable(true);
+        	defendButton.setDisable(true);
+        	endTurn.setDisable(true);
+    		battleWonScene.setVisible(true);
+    		BattleText.setText("You won! Click next scene.");
+    	}
     }
     
     public int rollingFunction(){
@@ -572,7 +566,7 @@ public class BattleController{
                         File file = new File("/../../images/dice" + dice.getDie1() +".png");
                         System.out.print(dice.getDie1() + " ");
                         diceImage.setImage(new Image(file.toURI().toString()));
-                        Thread.sleep(100);
+                        Thread.sleep(20);
                     }
                     basicAttackButton.setDisable(false);
                 	multiAttackButton.setDisable(false);
@@ -629,4 +623,3 @@ public class BattleController{
         return dice.getDie1();
    }
 }
-
