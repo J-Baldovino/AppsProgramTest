@@ -125,15 +125,11 @@ public class BattleController{
     private TranslateTransition translateSword2 = new TranslateTransition();
     private RotateTransition rotateSword1 = new RotateTransition();
     private RotateTransition rotateSword2 = new RotateTransition();
-    private TranslateTransition translateEnemy1 = new TranslateTransition();
-    private TranslateTransition translateEnemy2 = new TranslateTransition();
-    private TranslateTransition translatePlayer1 = new TranslateTransition();
-    private TranslateTransition translatePlayer2 = new TranslateTransition();
+    private TranslateTransition translateGoomba = new TranslateTransition();
+    private TranslateTransition translateSanic = new TranslateTransition();
     //private FadeTransition fadeGoomba = new FadeTransition();
     private FadeTransition fadeHeal = new FadeTransition();
     private TranslateTransition translateShield = new TranslateTransition();
-    private FadeTransition fadeSword = new FadeTransition();
-    private FadeTransition fadeShield = new FadeTransition();
 
     Random random = new Random();
     
@@ -224,34 +220,19 @@ public class BattleController{
 		translateShield.setByY(-40);
 		translateShield.setAutoReverse(true);
     	
-		//Preparing translation movement for enemy1
-		translateEnemy1.setNode(goomba);
-		translateEnemy1.setDuration(Duration.millis(200));
-		translateEnemy1.setCycleCount(4);
-		translateEnemy1.setByX(35); 
-		translateEnemy1.setAutoReverse(true);
+		//Preparing translation movement for enemy
+		translateGoomba.setNode(goomba);
+		translateGoomba.setDuration(Duration.millis(200));
+		translateGoomba.setCycleCount(4);
+		translateGoomba.setByX(35); 
+		translateGoomba.setAutoReverse(true);
 		
-		//Preparing translation movement for player1
-		translatePlayer1.setNode(sanic);
-		translatePlayer1.setDuration(Duration.millis(200));
-		translatePlayer1.setCycleCount(2);
-		translatePlayer1.setByY(-35); 
-		translatePlayer1.setAutoReverse(true);
-		
-		//Preparing translation movement for enemy2
-		translateEnemy2.setNode(goomba);
-		translateEnemy2.setDuration(Duration.millis(200));
-		translateEnemy2.setCycleCount(2);
-		translateEnemy2.setByX(-350);
-		translateEnemy2.setByY(120);
-		translateEnemy2.setAutoReverse(true);
-				
-		//Preparing translation movement for player2
-		translatePlayer2.setNode(sanic);
-		translatePlayer2.setDuration(Duration.millis(200));
-		translatePlayer2.setCycleCount(2);
-		translatePlayer2.setByY(-35); 
-		translatePlayer2.setAutoReverse(true);
+		//Preparing translation movement for player
+		translateSanic.setNode(sanic);
+		translateSanic.setDuration(Duration.millis(200));
+		translateSanic.setCycleCount(2);
+		translateSanic.setByY(-35); 
+		translateSanic.setAutoReverse(true);
 		
 		//Preparing fade animation for the enemy
 //		fadeGoomba.setNode(goomba);
@@ -270,14 +251,6 @@ public class BattleController{
 		fadeHeal.setFromValue(0); //original opacity value
 		fadeHeal.setToValue(1);	//target opacity value
 
-		//Preparing fade animation for shield
-		fadeShield.setNode(shield);
-		fadeShield.setDuration(Duration.millis(550));
-		fadeShield.setCycleCount(2);
-		fadeShield.setInterpolator(Interpolator.EASE_OUT); //Causes the animation to slow down near the end of the sequence
-		fadeShield.setAutoReverse(true);
-		fadeShield.setFromValue(0); //original opacity value
-		fadeShield.setToValue(1);	//target opacity value
 	}
 
     @FXML
@@ -333,9 +306,12 @@ public class BattleController{
     	shield.setVisible(false);
     	translateSword1.play();
     	rotateSword1.play();
-    	translateEnemy1.play();
-    	translatePlayer1.play();
-    	fadeSword.play();
+    	translateGoomba.play();
+    	translateSanic.play();
+    	}
+    	else
+    	{
+    		BattleText.setText("You do not have enough mana");
     	}
     }
     
@@ -355,8 +331,8 @@ public class BattleController{
         	shield.setVisible(false);
         	translateSword2.play();
         	rotateSword2.play();
-        	translateEnemy2.play();
-        	translatePlayer2.play();
+        	translateGoomba.play();
+        	translateSanic.play();
     	}
     	else
     	{
@@ -396,7 +372,7 @@ public class BattleController{
     
     @FXML
     void defendButton(ActionEvent event) {
-Person DiceHero = new Person();
+    	Person DiceHero = new Person();
     	
     	if(DiceHero.getMana() >= 2)
     	{
@@ -421,6 +397,7 @@ Person DiceHero = new Person();
     	update();
 
     }
+    
     
     @FXML
     void endTurn(ActionEvent event) throws InterruptedException {
@@ -470,30 +447,10 @@ Person DiceHero = new Person();
 		}
     	update();
     	
-    	//TwoDice dice = new TwoDice();
-    	if(endTurn.getText().equals("End Turn"))
-    	{
-//    	BattleText.setText(list.get(DiceHero.getBattlesWon()).getName() + "'s turn" );
-    	Thread.sleep(1000); //small delay 
-    	//System.out.println(list.get(DiceHero.getBattlesWon()).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(DiceHero.getBattlesWon()).getAttackPower());
-    	BattleText.setText(list.get(DiceHero.getBattlesWon()).getName() + " attacks " + "`Add hero's name later` " + "for " + list.get(DiceHero.getBattlesWon()).getAttackPower());
-    	DiceHero.takeDamage(list.get(DiceHero.getBattlesWon()).getAttackPower());
-    	endTurn.setText("Start turn");
-    	}
-    	else
-    	{
-    		//DiceHero.addMana(rollingFunction());
-    		BattleText.setText("Hero's name turn! Hero's name gains " + DiceHero.addMana(rollingFunction()) + " mana!");
-    		endTurn.setText("End Turn");
-    		
-    	}
-    	translateEnemy2.play();
-    	translatePlayer2.play();
-    	update();	
     }
     
     @FXML
-    void battleWonScene(ActionEvent event) throws InterruptedException {
+    void battleWonScene(ActionEvent event) {
     	mp.stop();
     	Person DiceHero = new Person();
     	DiceHero.setBattlesWon();
@@ -625,6 +582,3 @@ Person DiceHero = new Person();
         return dice.getDie1();
    }
 }
-
-
-
