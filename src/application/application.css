@@ -20,6 +20,10 @@
 	-fx-underline:true; 
 }
 
+#basicAttackButton:hover{
+  -fx-background-color: #b11313 !important;
+  -fx-border-color:white;
+}
 
 #basicAttackButton:pressed{
   -fx-background-color: #fab4b0 !important;
