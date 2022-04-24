@@ -422,7 +422,6 @@ Person DiceHero = new Person();
 
     }
     
-    
     @FXML
     void endTurn(ActionEvent event) throws InterruptedException {
     	Person DiceHero = new Person();
