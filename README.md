@@ -24,9 +24,7 @@ Known Bugs/ Issues:
 Login info: N/A
 
 Other requriments: 
-1. Upheaval needs to be downloaded to view the font correctly.(https://www.dafont.com/upheaval.font)
-        1.1. Download upheaval zip
-        1.2. Right click on upheavtt.ttf file and "install for all users"  
+1. Upheaval needs to be downloaded to view the font correctly.(https://www.dafont.com/upheaval.font). Download upheaval zip. Right click on upheavtt.ttf file and "install for all users"  
 
 Instrcutions for Running the code:
   MAIN SCREEN
