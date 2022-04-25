@@ -13,7 +13,12 @@ Members:
 
 Description: An rpg focused game with a twist of dice rolling to determine the outcome of commands decided by the user
 
-Known Bugs: N/A (So far)
+Known Bugs: 
+1. Dice rolling animation does not work. At one point it did but it does not work with the current code that we have.
+2. Dice face does not show when gaining the initial amount of mana for the character.
+3. Not a real issue but when losing the game, it transitions immediately to the lose screen with no enemy attack animation.
+4. End turn / Start turn button sizes are different.
+5. Sometimes animation fade makes the next time you use it not show up.
 
 Login info: N/A
 
