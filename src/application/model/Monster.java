@@ -41,8 +41,10 @@ public class Monster {
 	// toString method returns name with getter
 	public String takeDamage(int damage) {
 		this.health -= damage;
-//		System.out.println(getName() + " has taken " + damage);
-//		return getHealth();
+		if(this.health<=0)
+		{
+			this.health=0;
+		}
 		return getName() + " has taken " + damage;
 	}
 }

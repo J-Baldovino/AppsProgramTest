@@ -16,6 +16,16 @@
 #submitButton:hover{
 	-fx-underline:true; 
 }
+#victoryTable{
+	-fx-font-family:"Upheaval TT (BRK)";
+	-fx-text-fill:white;
+}
+#sT{
+	-fx-font-family:"Upheaval TT (BRK)";
+	-fx-font-size:30pt;
+	-fx-alignment:center;
+	-fx-text-alignment:center;
+} 
 #sButton:hover{
 	-fx-underline:true; 
 }
@@ -55,4 +65,71 @@
 #defendButton:pressed{
   -fx-background-color: #92bded !important;
   }
-  }
+  
+#nameText{
+	-fx-alignment:center;
+	-fx-text-alignment:center;
+	-fx-text-fill:white;
+}
+#BattleText{
+	-fx-alignment:top-left;
+	-fx-text-alignment:left;
+	-fx-text-fill:white;
+}
+#dice1{
+	-fx-alignment:center;
+	-fx-text-alignment:center;
+	-fx-text-fill:white;
+}
+#playerMana{
+	-fx-alignment:center;
+	-fx-text-alignment:center;
+	-fx-text-fill:white;
+}
+#manaL{
+	-fx-alignment:center;
+	-fx-text-alignment:center;
+	-fx-text-fill:blue;
+}
+#endTurn:hover{
+	-fx-underline:true; 
+}
+#battleWonScene:hover{
+	-fx-underline:true; 
+}
+#healthL{
+	-fx-alignment:center;
+	-fx-text-alignment:center;
+	-fx-text-fill:green;
+}
+#shieldL{
+	-fx-alignment:center;
+	-fx-text-alignment:center;
+	-fx-text-fill:yellow;
+}
+#enemyHpL{
+	-fx-alignment:center;
+	-fx-text-alignment:center;
+	-fx-text-fill:green;
+}
+#EnemyHealth{
+	-fx-alignment:center;
+	-fx-text-alignment:center;
+	-fx-text-fill:white;
+}
+#ShieldValue{
+	-fx-alignment:center;
+	-fx-text-alignment:center;
+	-fx-text-fill:white;
+}
+#playerHealth{
+	-fx-alignment:center;
+	-fx-text-alignment:center;
+	-fx-text-fill:white;
+}
+#shieldValue{
+	-fx-alignment:center;
+	-fx-text-alignment:center;
+	-fx-text-fill:white;
+}
+  

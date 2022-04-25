@@ -19,7 +19,10 @@
             <Font name="Upheaval TT -BRK-" size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="nameText" layoutX="326.0" layoutY="100.0" />
+      <TextField fx:id="nameText" layoutX="265.0" layoutY="71.0" prefHeight="68.0" prefWidth="271.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="40.0" />
+         </font></TextField>
       <Button fx:id="sButton" layoutX="343.0" layoutY="157.0" mnemonicParsing="false" onAction="#putName" onMouseEntered="#showHand" onMouseExited="#deleteHand" style="-fx-background-color: transparent;" text="Submit" textFill="WHITE">
          <font>
             <Font name="Upheaval TT -BRK-" size="23.0" />
