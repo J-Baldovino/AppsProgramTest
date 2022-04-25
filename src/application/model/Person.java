@@ -11,23 +11,6 @@ public class Person {
 	private static int score = 0;
 	private static String name="";
 
-//constructor
-//int health, int maxHealth, int mana, int maxMana
-//	public Person( int health, int maxHealth, int mana, int maxMana) {
-//		//this.name = name;
-//		Person.health = health;
-//		Person.maxHealth = maxHealth;
-//		Person.mana = mana;
-//		Person.maxMana = maxMana;
-//	}
-	//Person DiceHero = new Person(10, 10, 0, 10);
-
-//setter
-	/*
-	public void setName(String name) {
-		this.name = name;
-	}
-	*/
 	public void reset() {
 		Person.health = 10;
 		Person.maxHealth = 10;
@@ -42,7 +25,7 @@ public class Person {
 		Person.score += 100;
 	}
 	public int getScore() {
-		return Person.score = score;
+		return Person.score;
 	}
 	public void setHealth(int health) {
 		Person.health = health;
@@ -54,7 +37,6 @@ public class Person {
 	
 	public void setBattlesWon() {
 		Person.battlesWon++;
-		//return Person.mana;
 	}
 	
 	public static void setName(String n)
@@ -67,12 +49,6 @@ public class Person {
 		return Person.name;
 	}
 
-	// getter
-	/*
-	public String getName() {
-		return this.name;
-	}
-*/
 	public int getHealth() {
 		return Person.health;
 	}
@@ -124,9 +100,8 @@ public class Person {
 	}
 	
 	public int basicStrike(int diceRoll) {
-//		System.out.println(getName() + " uses basic strike for " + attackpower + "!");
 		return diceRoll;
-//		return getName() + " uses basic strike for " + attackpower + "!";
+
 	}
 	public int multiplicationStrike(int dice1, int dice2) {
 		return dice1 * dice2;
@@ -165,14 +140,12 @@ public class Person {
 	public void healDice(int dice1) { 
 		Person.health += dice1;
 		System.out.println("NAME has healed for " +dice1);
-		//return getName() + " has healed for " + dice1+"\n";
 	}
 	
 	public void reroll(TwoDice dice) { 
 		dice.roll();
 		
 		System.out.println("Nmae has rolled dice");
-		//return getName() + " has rerolled \n";
 	}
 	
 	public void takeDamage(int attackpower) {
@@ -184,20 +157,17 @@ public class Person {
 		}
 		
 		Person.health -= damage;
-//		System.out.println(getName() + " has taken " + attackpower);
-//		return getHealth();
+		if(Person.health<0)
+		{
+			Person.health=0;
+		}
+
 		
 		System.out.println("NAME has taken" + attackpower);
-		//return getName() + " has taken " + attackpower;
+
 	}
 	
-	/*
 
-	// toString method returns name with getter
-	public String toString() {
-		return getName();
-	}
-	*/
 	
 	public void mana(int dice1) {
     	Person.mana += dice1;
@@ -213,14 +183,6 @@ public class Person {
 	//Need to make sure that the mana is enough
 	
 	 public int strike(int dice1) {
-//	    	//mana costs are outside of these functions
-//		 if(Person.mana >= 1) { 
-//	    	Person.mana -= 1;
-//		 }
-//		 else {
-//			 //Set textbox to NO MANA Wait for next Turn;
-//			 dice1 = 0;
-//		 }
 		 
 		 return dice1;
 	    	
@@ -228,14 +190,6 @@ public class Person {
 	    
 	    public int multistrike(int dice1) {
 	    	
-//	    	if(Person.mana >= 4) {
-//	    	Person.mana -= 4;
-//	    	}
-//	    	
-//	    	else {
-//	    		//NO mana Wait for next Turn
-//	    		dice1 = 0;
-//	    	}
 	    	
 	    	return dice1 * dice1;
 	    }

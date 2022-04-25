@@ -104,42 +104,75 @@
             <Image url="@images/Manabox.png" />
          </image>
       </ImageView>
-      <TextField fx:id="dice1" alignment="CENTER" editable="false" layoutX="642.0" layoutY="506.0" prefHeight="45.0" prefWidth="45.0" />
-      <TextField id="dice2" layoutX="717.0" layoutY="506.0" prefHeight="45.0" prefWidth="45.0" />
-      <TextField fx:id="BattleText" alignment="CENTER" editable="false" layoutX="33.0" layoutY="432.0" prefHeight="108.0" prefWidth="551.0" text="Battle Text" />
+      <TextField fx:id="dice1" alignment="CENTER" editable="false" layoutX="642.0" layoutY="506.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="23.0" />
+         </font></TextField>
+      <TextField id="dice2" layoutX="717.0" layoutY="506.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: transparent;" />
       <ImageView fx:id="diceImage" fitHeight="45.0" fitWidth="45.0" layoutX="642.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="playerHealth" layoutX="655.0" layoutY="315.0" text="Health" textFill="WHITE">
+      <Label fx:id="playerHealth" layoutX="655.0" layoutY="330.0" text="Health" textFill="WHITE">
          <font>
             <Font name="Upheaval TT -BRK-" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="endTurn" layoutX="629.0" layoutY="750.0" mnemonicParsing="false" onAction="#endTurn" text="End Turn" />
-      <Label fx:id="EnemyName" layoutX="33.0" layoutY="46.0" text="Enemy" textFill="WHITE">
+      <Button fx:id="endTurn" layoutX="248.0" layoutY="746.0" mnemonicParsing="false" onAction="#endTurn" prefHeight="34.0" prefWidth="121.0" style="-fx-background-color: transparent;" text="End Turn" textFill="WHITE">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="20.0" />
+         </font></Button>
+      <Label fx:id="EnemyName" layoutX="33.0" layoutY="46.0" text="Enemy" textFill="RED">
          <font>
             <Font name="Upheaval TT -BRK-" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="EnemyHealth" layoutX="260.0" layoutY="39.0" prefHeight="45.0" prefWidth="97.0" text="Enemy" textFill="WHITE">
+      <Label fx:id="EnemyHealth" layoutX="260.0" layoutY="57.0" prefHeight="20.0" prefWidth="97.0" text="Enemy" textFill="WHITE">
          <font>
             <Font name="Upheaval TT -BRK-" size="30.0" />
          </font>
       </Label>
       <ImageView fx:id="diceImage2" fitHeight="45.0" fitWidth="45.0" layoutX="717.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="playerName" layoutX="443.0" layoutY="308.0" prefHeight="45.0" prefWidth="97.0" text="Player" textFill="WHITE">
+      <Label fx:id="playerName" layoutX="436.0" layoutY="315.0" prefHeight="31.0" prefWidth="97.0" text="Player" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font name="Upheaval TT -BRK-" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="playerMana" layoutX="638.0" layoutY="643.0" prefHeight="45.0" prefWidth="97.0" text="Mana" textFill="WHITE">
+      <Label fx:id="playerMana" layoutX="639.0" layoutY="665.0" prefHeight="45.0" prefWidth="97.0" text="Mana" textFill="WHITE">
          <font>
             <Font name="Upheaval TT -BRK-" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="shieldValue" layoutX="545.0" layoutY="308.0" prefHeight="45.0" prefWidth="97.0" text="Shield" textFill="WHITE">
+      <Label fx:id="shieldValue" layoutX="540.0" layoutY="330.0" prefHeight="31.0" prefWidth="97.0" text="Shield" textFill="WHITE">
          <font>
             <Font name="Upheaval TT -BRK-" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="battleWonScene" layoutX="708.0" layoutY="750.0" mnemonicParsing="false" onAction="#battleWonScene" text="Next Scene" visible="false" />
+      <Button fx:id="battleWonScene" layoutX="618.0" layoutY="750.0" mnemonicParsing="false" onAction="#battleWonScene" style="-fx-background-color: transparent;" text="Next Scene" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="20.0" />
+         </font></Button>
+      <Label fx:id="manaL" layoutX="612.0" layoutY="608.0" prefHeight="31.0" prefWidth="150.0" text="Mana" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="shieldL" layoutX="533.0" layoutY="298.0" prefHeight="31.0" prefWidth="107.0" text="Shield" textFill="WHITE">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="healthL" layoutX="655.0" layoutY="298.0" text="Health" textFill="WHITE">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="enemyHpL" layoutX="255.0" layoutY="31.0" prefHeight="31.0" prefWidth="107.0" text="Health" textFill="WHITE">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="BattleText" layoutX="26.0" layoutY="432.0" prefHeight="108.0" prefWidth="551.0" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Upheaval TT -BRK-" size="23.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

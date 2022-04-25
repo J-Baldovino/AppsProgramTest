@@ -6,9 +6,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-
-
-
 import application.model.Champions;
 import application.model.Person;
 import application.model.Victory;
@@ -20,9 +17,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -56,10 +54,10 @@ public class VictoryController {
     private Button submitButton;
 
     @FXML
-    private TextField winName;
-
+    private Label winName;
+    
     @FXML
-    private TextField winScore;
+    private Label winScore;
     
     @FXML
     private void initialize() throws IOException
@@ -87,7 +85,6 @@ public class VictoryController {
         Victory.addVictor(winName.getText(), winScore.getText());
         
         victoryTable.setItems(getChampions());
-//        System.out.print(DiceHero.getScore());
     }
 
     @FXML
@@ -98,7 +95,6 @@ public class VictoryController {
     	smp.setStartTime(new Duration(600));
     	smp.setVolume(0.3);
     	smp.play();
-//    	Victory.addVictor(winName.getText(), winScore.getText());
     	try {
     		mp.stop();
     		URL url = new File("Title.fxml").toURI().toURL();
