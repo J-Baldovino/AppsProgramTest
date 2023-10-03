@@ -1,65 +1,58 @@
-# AppsProgramTest
+# AppsProgramTest: Dice Attack
 
-Project Name: Dice Attack
+**Team Name:** Team 6
 
-Team Name: Team 6
+**Members:**
+- Jhan Baldovino
+- Jose Daniel Gutierrez
+- Arnold Lee
+- Logan Ramirez
+- Martin Sanabia
 
-Members:
-        - Jhan Baldovino
-        - Jose Daniel Gutierrez
-        - Arnold Lee
-        - Logan Ramirez
-        - Martin Sanabia
+## Description
 
-Description: An rpg focused game with a twist of dice rolling to determine the outcome of commands decided by the user
+Dice Attack is an RPG-focused game with a twist of dice rolling to determine the outcome of commands decided by the user.
 
-Known Bugs/ Issues: 
-1. Dice rolling animation does not work. At one point it did but it does not work with the current code that we have.
-2. Dice face does not show when gaining the initial amount of mana for the character.
-3. Not a real issue but when losing the game, it transitions immediately to the lose screen with no enemy attack animation.
-4. End turn / Start turn button sizes are different.
-5. Sometimes animation fade makes the next time you use it not show up.
-6. Victory screen points can only be one value since all there is to increment points is how many times you win and points don't get added to the board if you lose.
+## Known Bugs/Issues
 
-Login info: N/A
+1. The dice rolling animation does not work. At one point, it did, but it does not work with the current code.
+2. The dice face does not show when gaining the initial amount of mana for the character.
+3. Not a real issue, but when losing the game, it transitions immediately to the lose screen with no enemy attack animation.
+4. The "End Turn" and "Start Turn" buttons have different sizes.
+5. Sometimes, the animation fade makes the next time you use it not show up.
+6. Victory screen points can only be one value since all there is to increment points is how many times you win, and points don't get added to the board if you lose.
 
-Other requriments: 
-1. Upheaval needs to be downloaded to view the font correctly.(https://www.dafont.com/upheaval.font). Download upheaval zip. Right click on upheavtt.ttf file and "install for all users"  
+**Login Info:** N/A
 
-Instrcutions for Running the code:
-  MAIN SCREEN
-1) On the main screen you can either click Play or Credits
-2) Click Play to start the game / Click Credits to see the credits
- 
- Stage Screen
-1) Press "Go to Battle"
+## Other Requirements
 
-  BATLLE SCREEN
-  
-  
-  In the game you will have MANA represented as Char: 
-  That will allow you to select what you want to do in battle
-  
-  In the battle screen you will be able to choose 4 different options
-  - Strike
-  - Multi Strike
-  - Heal
-  - Defend
-  
-  Each of these options have a different price and once selected your MANA will update
-  
-  if you don't have enough mana a text will appear lettintg you know.
-  
-  Once you have decided on your movements click on "End Turn" so the enemys can do their move
-  
-  
+1. The Upheaval font needs to be downloaded to view it correctly. You can download it from [here](https://www.dafont.com/upheaval.font). Download the Upheaval zip file, right-click on the upheavtt.ttf file, and choose "Install for all users."
 
-VICTORY / DEFEAT SCREEN
+## Instructions for Running the Code
 
-  1) Go to main menu
-  
+### Main Screen
 
+1. On the main screen, you can either click "Play" or "Credits."
+2. Click "Play" to start the game or click "Credits" to see the credits.
 
+### Stage Screen
 
-       
+1. Press "Go to Battle."
 
+### Battle Screen
+
+In the game, you will have MANA represented as Char, which will allow you to select what you want to do in battle.
+
+In the battle screen, you will be able to choose from 4 different options:
+- Strike
+- Multi Strike
+- Heal
+- Defend
+
+Each of these options has a different price, and once selected, your MANA will update. If you don't have enough mana, a text will appear letting you know.
+
+Once you have decided on your movements, click on "End Turn" so the enemies can make their move.
+
+### Victory/Defeat Screen
+
+1. Go back to the main menu.
